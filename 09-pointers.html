@@ -1,0 +1,165 @@
+<section id="pointers">
+
+    <section>
+        <h2>Les pointeurs</h2>
+    </section>
+
+    <section>
+        <h3>Les pointeurs en C</h3>
+        <p>
+            Les pointeurs en C sont des variables qui contiennent l'adresse mémoire d'une autre variable. Ils permettent de
+            manipuler directement la mémoire et d'accéder aux données stockées à une adresse spécifique.
+        </p>
+        <pre><code class="language-c">int number = 42;
+int *pointer = &amp;number;
+
+printf("Value: %d\n", number);    // Affiche: Value: 42
+printf("Address: %p\n", &number); // Affiche: Address: 0x7ffeefbff5d4
+printf("Pointer: %p\n", pointer); // Affiche: Pointer: 0x7ffeefbff5d4
+printf("Value: %d\n", *pointer);  // Affiche: Value: 42</code></pre>
+        <p>
+            Le caractère <code>&amp;</code> est utilisé pour obtenir l'adresse d'une variable, tandis que le caractère
+            <code>*</code> est utilisé pour accéder à la valeur pointée par un pointeur.
+        </p>
+        <p>
+            Nous pouvons représenter l'exemple ci-dessus avec ce diagramme :
+        </p>
+        <img src="assets/images/pointers.png" alt="Diagramme de pointeur">
+    </section>
+
+    <section>
+        <h3>Paramètres de fonction par référence</h3>
+        <p>
+            Les pointeurs en C sont souvent utilisés pour passer des paramètres par référence à une fonction. Cela permet
+            à la fonction de modifier directement les valeurs des paramètres passés.
+        </p>
+        <p>
+            Nous avons déjà vu un exemple de passage de paramètres par référence avec la fonction <code>scanf()</code> :
+        </p>
+        <pre><code class="language-c">int number;
+scanf("%d", &amp;number); // Passer l'adresse de la variable number</code></pre>
+        <p>
+            Voici un exemple de fonction qui incrémente une variable en utilisant un pointeur :
+        </p>
+        <pre><code class="language-c">void increment(int *value) {
+    (*value)++;
+}
+
+int number = 42;
+increment(&amp;number);
+printf("Number: %d\n", number); // Affiche: Number: 43</code></pre>
+    </section>
+
+    <section>
+        <h3>Les pointeurs et les tableaux</h3>
+        <p>
+            Les pointeurs en C sont souvent utilisés pour manipuler des tableaux dont la taille est déterminée à
+            l'exécution et non à la compilation (par exemple lorsque l'utilisateur saisit la taille du tableau).
+        </p>
+        <p>
+            Voici un exemple de création d'un tableau dynamique en utilisant des pointeurs :
+        </p>
+        <pre><code class="language-c">int size;
+printf("Enter the size of the array: ");
+scanf("%d", &size);
+
+int *array = (int *)malloc(size * sizeof(int));
+
+for (int i = 0; i < size; i++) {
+    array[i] = i;
+    printf("%d ", array[i]);
+}
+
+free(array);</code></pre>
+        <p>
+            Dans cet exemple, la fonction <code class="language-c">malloc()</code> est utilisée pour allouer de la
+            mémoire pour le tableau. La fonction <code class="language-c">free()</code> est utilisée pour libérer la
+            mémoire allouée une fois que le tableau n'est plus nécessaire.
+        </p>
+    </section>
+
+    <section>
+        <h3>Fonction de rappel (callback)</h3>
+        <p>
+            Les pointeurs en C peuvent également être utilisés pour passer des fonctions en tant que paramètres à d'autres
+            fonctions. Cela permet d'implémenter des fonctions de rappel (callbacks) qui sont appelées à des moments
+            spécifiques dans le programme.
+        </p>
+        <p>
+            Cette notion de fonction de rappel est couramment utilisée dans des langages comme JavaScript pour les
+            événements et les requêtes asynchrones.
+        </p>
+        <pre><code class="language-c">void callback() {
+    printf("Callback function called.\n");
+}
+
+void perform(void (*function)()) {
+    function();
+}
+
+perform(callback); // Affiche: Callback function called.</code></pre>
+    </section>
+
+    <section>
+        <h3>Fonctions de rappel - Exemple</h3>
+        <p>
+            Voici un exemple plus concret d'utilisation des fonctions de rappel en C. Nous allons créer une fonction
+            <code>filter()</code> qui prend un tableau d'entiers et une fonction de rappel en paramètres. La fonction de
+            rappel est utilisée pour filtrer les éléments du tableau selon un critère spécifique.
+        </p>
+        <pre><code class="language-c">void filter(int array[], int size, int (*callback)(int)) {
+    for (int i = 0; i < size; i++) {
+        if (callback(array[i])) {
+            printf("%d ", array[i]);
+        }
+    }
+}
+
+int is_even(int number) {
+    return number % 2 == 0;
+}
+
+int main() {
+    int numbers[] = {1, 2, 3, 4, 5};
+    int size = sizeof(numbers) / sizeof(numbers[0]);
+
+    printf("Even numbers: ");
+    filter(numbers, size, is_even);
+    return 0;
+}</code></pre>
+    </section>
+
+    <section>
+        <h3>Fonctions de rappel - Exercice</h3>
+        <div class="instructions">
+            <ol>
+                <li>
+                    Créez une fonction <code>includes()</code> qui prend un tableau d'entiers, sa taille et une fonction de
+                    rappel en paramètres.
+                </li>
+                <li>
+                    La fonction doit vérifier si un élément du tableau vérifie le critère de la fonction de rappel.
+                </li>
+            </ol>
+        </div>
+        <p>
+            Exemple d'utilisation de la fonction <code>includes()</code> :
+        </p>
+        <pre><code class="language-c">int is_negative(int number) {
+    return number &lt; 0;
+}
+
+int main() {
+    int numbers[] = {1, -2, 3, -4, 5};
+    int size = sizeof(numbers) / sizeof(numbers[0]);
+
+    if (includes(numbers, size, is_negative)) {
+        printf("The array contains negative numbers.\n");
+    } else {
+        printf("The array does not contain negative numbers.\n");
+    }
+    return 0;
+}</code></pre>
+    </section>
+
+</section>

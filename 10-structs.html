@@ -1,0 +1,253 @@
+<section id="strucs">
+
+    <section>
+        <h2>Les structures</h2>
+    </section>
+
+    <section>
+        <h3>Les structures en C</h3>
+        <p>
+            Les structures en C sont des types de données qui permettent de regrouper plusieurs variables de types différents
+            sous un même nom. Elles permettent de créer des objets complexes en combinant des données de types primitifs.
+        </p>
+        <pre><code class="language-c">struct Person {
+    char name[50];
+    int age;
+    float height;
+};</code></pre>
+    </section>
+
+    <section>
+        <h3>Manipuler les structures</h3>
+        <p>
+            Pour manipuler une structure en C, vous devez d'abord la déclarer en utilisant le mot-clé <code>struct</code> suivi
+            du nom de la structure. Vous pouvez ensuite accéder à ses membres en utilisant l'opérateur <code>.</code>.
+        </p>
+        <pre><code class="language-c">struct Person person;
+
+strcpy(person.name, "Alice");
+person.age = 30;
+person.height = 1.75;</code></pre>
+        <p>
+            Vous pouvez également initialiser une structure lors de sa déclaration en utilisant une liste de valeurs entre
+            accolades.
+        </p>
+        <pre><code class="language-c">struct Person person = {"Alice", 30, 1.75};</code></pre>
+        <p>
+            Vous pouvez ensuite lire les valeurs de la structure en utilisant les mêmes opérations.
+        </p>
+        <pre><code class="language-c">printf("Name: %s\n", person.name);</code></pre>
+    </section>
+
+    <section>
+        <h3>Les structures imbriquées</h3>
+        <p>
+            Les structures en C peuvent être imbriquées, c'est-à-dire qu'elles peuvent contenir d'autres structures en tant que
+            membres.
+        </p>
+        <pre><code class="language-c">struct Date {
+    int day;
+    int month;
+    int year;
+};
+
+struct Person {
+    char name[50];
+    int age;
+    struct Date birthdate;
+};</code></pre>
+        <p>
+            Vous pouvez accéder aux membres des structures imbriquées en utilisant plusieurs opérateurs <code class="language-c">.</code>.
+        </p>
+        <pre><code class="language-c">struct Person person = {"Alice", 30, {1, 1, 1990}};
+printf("Birthdate: %d/%d/%d\n", person.birthdate.day, person.birthdate.month, person.birthdate.year);</code></pre>
+    </section>
+
+    <section>
+        <h3>Les pointeurs de structures</h3>
+        <p>
+            Les pointeurs en C peuvent également être utilisés pour manipuler des structures. Vous pouvez déclarer un pointeur
+            vers une structure en utilisant le type de la structure suivi de l'opérateur <code class="language-c">*</code>.
+        </p>
+        <pre><code class="language-c">struct Person *person_ptr;</code></pre>
+        <p>
+            Vous pouvez ensuite allouer de la mémoire pour une structure en utilisant la fonction
+            <code class="language-c">malloc()</code> et accéder à ses membres en utilisant l'opérateur
+            <code class="language-c">-&gt;</code>.
+        </p>
+        <pre><code class="language-c">person_ptr = (struct Person *)malloc(sizeof(struct Person));
+strcpy(person_ptr->name, "Alice");
+person_ptr->age = 30;
+person_ptr->height = 1.75;</code></pre>
+        <p>
+            N'oubliez pas de libérer la mémoire allouée une fois que vous avez terminé d'utiliser la structure.
+        </p>
+        <pre><code class="language-c">free(person_ptr);</code></pre>
+    </section>
+
+    <section>
+        <h3>Exemple de structure</h3>
+        <div class="container">
+            <div class="col">
+                <pre><code class="language-c">// person.h
+struct Person {
+    char name[50];
+    int age;
+    float height;
+};</code></pre>
+            </div>
+            <div class="col">
+                <pre><code class="language-c">// person.c
+#include &lt;stdio.h&gt;
+#include &lt;stdlib.h&gt;
+#include "person.h"
+
+void print_person(struct Person person) {
+    printf("Name: %s\n", person.name);
+    printf("Age: %d\n", person.age);
+    printf("Height: %.2f\n", person.height);
+}</code></pre>
+            </div>
+        </div>
+        <pre><code class="language-c">// main.c
+#include &lt;stdio.h&gt;
+#include &lt;stdlib.h&gt;
+#include "person.h"
+
+int main() {
+    struct Person person = {"Alice", 30, 1.75};
+    print_person(person);
+    return 0;
+}</code></pre>
+    </section>
+
+    <section>
+        <h3>Exercice - Points</h3>
+        <div class="instructions">
+            <ol>
+                <li>
+                    Créez une structure <code>Point</code> avec deux membres <code>x</code> et <code>y</code> de type entier.
+                </li>
+                <li>
+                    Créez une fonction <code>print_point</code> qui prend un paramètre de type <code>Point</code> et affiche les
+                    valeurs des membres <code>x</code> et <code>y</code>.
+                </li>
+                <li>
+                    Créez une fonction <code>distance</code> qui prend deux paramètres de type <code>Point</code> et retourne la
+                    distance entre ces deux points.
+                </li>
+                <li>
+                    Créez un programme qui crée deux points, les affiche à l'écran et affiche la distance entre ces deux points.
+                </li>
+            </ol>
+        </div>
+    </section>
+
+    <section>
+        <h3>Listes chaînées</h3>
+        <p>
+            Les listes chaînées sont des structures de données qui permettent de stocker une séquence d'éléments en utilisant des
+            pointeurs. Chaque élément de la liste contient une valeur et un pointeur vers l'élément suivant.
+        </p>
+        <pre><code class="language-c">struct Node {
+    int data;
+    struct Node *next;
+};</code></pre>
+        <p>
+            Vous pouvez parcourir une liste chaînée en utilisant des boucles et des pointeurs pour accéder à chaque élément.
+        </p>
+        <pre><code class="language-c">struct Node *head = NULL;
+struct Node *current = NULL;
+
+for (current = head; current != NULL; current = current->next) {
+    printf("%d ", current->data);
+}</code></pre>
+    </section>
+
+    <section>
+        <h3>Exemple de liste chaînée</h3>
+        <div class="container">
+            <div class="col">
+                <pre><code class="language-c" style="font-size: 0.8em">// node.h
+struct Node {
+    int data;
+    struct Node *next;
+};
+
+void add_node(struct Node **head, int data);
+void print_list(struct Node *head);</code></pre>
+            </div>
+            <div class="col">
+                <pre><code class="language-c" style="font-size: 0.8em">// node.c
+#include &lt;stdio.h&gt;
+#include &lt;stdlib.h&gt;
+#include "node.h"
+
+void add_node(struct Node **head, int data) {
+    struct Node *new_node = (struct Node *)malloc(sizeof(struct Node));
+    new_node->data = data;
+    new_node->next = *head;
+    *head = new_node;
+}
+
+void print_list(struct Node *head) {
+    struct Node *current = head;
+    while (current != NULL) {
+        printf("%d ", current->data);
+        current = current->next;
+    }
+    printf("\n");
+}</code></pre>
+            </div>
+        </div>
+        <p>
+            Le paramètre <code>head</code> de la fonction <code>add_node</code> est un pointeur vers un pointeur de structure
+            <code>Node</code>. Cela permet de modifier le pointeur de tête de la liste chaînée.
+        </p>
+    </section>
+
+    <section>
+        <h3>Exemple de liste chaînée (suite)</h3>
+        <pre><code class="language-c">// main.c
+#include &lt;stdio.h&gt;
+#include &lt;stdlib.h&gt;
+#include "node.h"
+
+int main() {
+    struct Node *head = (struct Node *)malloc(sizeof(struct Node));
+    head->data = 1;
+    head->next = NULL;
+
+    add_node(&head, 2);
+    add_node(&head, 3);
+
+    print_list(head); // Output: 3 2 1
+    return 0;
+}</code></pre>
+        <p>
+            Dans cet exemple, les nouveaux éléments sont ajoutés au début de la liste chaînée en modifiant le pointeur de tête.
+        </p>
+        <p>
+            On parle alors de LIFO (Last In, First Out ou pile) à l'inverse de FIFO (First In, First Out ou file) car
+            les éléments sont retirés dans l'ordre inverse de leur insertion.
+        </p>
+    </section>
+
+    <section>
+        <h3>Exercice - Liste chaînée</h3>
+        <div class="instructions">
+            <ol>
+                <li>
+                    Créez une fonction permettant de récupérer le dernier élément d'une liste chaînée.
+                </li>
+                <li>
+                    Créez une fonction permettant d'insérer un élément à la fin d'une liste chaînée.
+                </li>
+                <li>
+                    Créez une fonction permettant de supprimer un élément d'une liste chaînée.
+                </li>
+            </ol>
+        </div>
+    </section>
+
+</section>

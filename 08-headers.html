@@ -1,0 +1,119 @@
+<section id="headers">
+
+    <section>
+        <h2>Les fichiers d'en-tête</h2>
+    </section>
+
+    <section>
+        <h3>Les fichiers d'en-tête en C</h3>
+        <p>
+            Les fichiers d'en-tête en C sont des fichiers qui contiennent des <strong>déclarations de fonctions,
+            de variables et de structures</strong> qui peuvent être incluses dans d'autres fichiers source.
+            Ils permettent de séparer l'interface de l'implémentation d'un programme.
+        </p>
+        <p>
+            Les fichiers d'en-tête en C ont l'extension <code>.h</code> et sont inclus dans les fichiers source à l'aide de la
+            directive <code class="language-c">#include</code>.
+        </p>
+        <p>
+            Nous avons déjà utilisé des fichiers d'en-tête standard comme <code>stdio.h</code> pour utiliser les fonctions
+            <code class="language-c">printf()</code> et <code class="language-c">scanf()</code>.
+        </p>
+    </section>
+
+    <section>
+        <h3>Les fichiers d'en-tête standard</h3>
+        <p>
+            Les fichiers d'en-tête standard en C sont des fichiers d'en-tête fournis par le compilateur C qui contiennent
+            des déclarations de fonctions, de variables et de structures standard.
+        </p>
+        <p>
+            Ces fichiers d'en-tête standard sont inclus dans les programmes C à l'aide de la directive
+            <code class="language-c">#include</code>.
+        </p>
+        <p>
+            Voici quelques exemples de fichiers d'en-tête standard en C :
+        </p>
+        <ul>
+            <li><code>stdio.h</code> : pour les fonctions d'entrée/sortie standard</li>
+            <li><code>stdlib.h</code> : pour les fonctions de gestion de la mémoire</li>
+            <li><code>string.h</code> : pour les fonctions de manipulation de chaînes de caractères</li>
+            <li><code>math.h</code> : pour les fonctions mathématiques</li>
+        </ul>
+    </section>
+
+    <section>
+        <h3>Les fichiers d'en-tête utilisateur</h3>
+        <p>
+            Les fichiers d'en-tête utilisateur sont des fichiers d'en-tête que vous créez pour
+            <strong>déclarer des fonctions</strong>, des variables et des structures que vous utilisez dans vos programmes.
+        </p>
+        <p>
+            Pour créer un fichier d'en-tête utilisateur, créez un fichier avec l'extension <code>.h</code> et déclarez les
+            fonctions, les variables et les structures que vous souhaitez utiliser dans vos programmes.
+        </p>
+        <p>
+            Vous pouvez ensuite inclure ce fichier d'en-tête dans vos fichiers source à l'aide de la directive
+            <code class="language-c">#include</code>.
+        </p>
+    </section>
+
+    <section>
+        <h3>Exemple de fichier d'en-tête</h3>
+        <div class="container">
+            <div class="col">
+                <pre><code class="language-c">// hello.h
+void say_hello();</code></pre>
+            </div>
+            <div class="col">
+                <pre><code class="language-c">// hello.c
+#include &lt;stdio.h&gt;
+#include "hello.h"
+
+void say_hello() {
+    printf("Hello, World!\n");
+}</code></pre>
+            </div>
+        </div>
+        <pre><code class="language-c">// main.c
+#include "hello.h"
+
+int main() {
+    say_hello();
+    return 0;
+}</code></pre>
+        <p>
+            Vous pouvez ensuite compiler ces fichiers en utilisant la commande <code>gcc hello.c main.c -o app</code>
+            pour créer un exécutable appelé <code>app</code> qui affiche <code>Hello, World!</code>.
+        </p>
+    </section>
+
+    <section>
+        <h3>Include guards</h3>
+        <p>
+            Lorsque vous incluez un fichier d'en-tête dans plusieurs fichiers source, il est possible que le même fichier
+            d'en-tête soit inclus plusieurs fois, ce qui peut entraîner des erreurs de compilation.
+        </p>
+        <div class="gcc-console">
+            <div class="gcc-error">error: redefinition of 'SAY_HELLO'</div>
+        </div>
+        <p>
+            Les include guards sont des directives de préprocesseur qui <strong>empêchent l'inclusion multiple</strong>
+            d'un fichier d'en-tête dans un programme.
+        </p>
+        <p>
+            Les include guards sont généralement définis en utilisant des <strong>macros</strong> qui vérifient si une
+            macro spécifique n'a pas déjà été définie avant d'inclure le fichier d'en-tête.
+        </p>
+        <p>
+            Voici un exemple d'include guard :
+        </p>
+        <pre><code class="language-c">#ifndef HELLO_H
+#define HELLO_H
+
+void say_hello();
+
+#endif</code></pre>
+    </section>
+
+</section>

@@ -1,0 +1,333 @@
+<section id="loops">
+
+    <section>
+        <h2>Les boucles</h2>
+    </section>
+
+    <section>
+        <h3>La boucle <code>while</code></h3>
+        <p>
+            La boucle <code>while</code> est une structure de contrôle qui permet de répéter un bloc d'instructions tant
+            qu'une condition est vraie.
+        </p>
+        <pre><code class="language-c">int i = 0;
+while (i < 10) {
+    printf("i = %d\n", i);
+    i++;
+}</code></pre>
+        <p>
+            Cette boucle <code>while</code> va afficher les nombres de 0 à 9.
+        </p>
+        <div class="instructions">
+            <ol>
+                <li>
+                    Écrire un programme en langage C pour souhaiter la bonne année à l'utilisateur en affichant
+                    <pre><code class="language-bash">3
+2
+1
+Bonne année !</code></pre>
+                </li>
+                <li>
+                    Ajouter une pause de 1 seconde entre chaque nombre.
+                </li>
+            </ol>
+        </div>
+    </section>
+
+    <section>
+        <h3>La boucle <code>do...while</code></h3>
+        <p>
+            La boucle <code>do...while</code> est une structure de contrôle qui permet de répéter un bloc d'instructions
+            tant qu'une condition est vraie.
+        </p>
+        <pre><code class="language-c">int i = 0;
+do {
+    printf("i = %d\n", i);
+    i++;
+} while (i < 10);</code></pre>
+        <p>
+            Cette boucle <code>do...while</code> va afficher les nombres de 0 à 9.
+        </p>
+        <div class="instructions">
+            <ol>
+                <li>
+                    Écrire un programme en langage C pour demander de deviner la taille de plusieurs monuments célèbres.
+                    <br>
+                    Commencez par stocker les tailles des monuments dans un tableau.
+                </li>
+                <li>
+                    Choisissez un monument aléatoirement et demandez à l'utilisateur de deviner sa taille.
+                </li>
+                <li>
+                    Affichez un message pour indiquer si la réponse est correcte ou non.
+                </li>
+                <li>
+                    Si la réponse est incorrecte, afficher le message <code>Trop grand</code> ou <code>Trop petit</code>.
+                </li>
+                <li>
+                    Répétez le jeu tant que l'utilisateur n'a pas trouvé la bonne réponse.
+                </li>
+            </ol>
+        </div>
+    </section>
+
+    <section>
+        <h3>La boucle <code>for</code></h3>
+        <p>
+            La boucle <code>for</code> est une structure de contrôle qui permet de répéter un bloc d'instructions un nombre
+            déterminé de fois.
+        </p>
+        <pre><code class="language-c">for (int i = 0; i < 10; i++) {
+    printf("i = %d\n", i);
+}</code></pre>
+        <p>
+            Cette boucle <code>for</code> va afficher les nombres de 0 à 9.
+        </p>
+        <div class="instructions">
+            <ol>
+                <li>
+                    Écrire un programme en langage C pour afficher la note d'un produit sous forme d'étoiles.
+                    <br>
+                    Demandez à l'utilisateur de saisir une note entre 0 et 5.
+                </li>
+                <li>
+                    Affichez la note sous forme d'étoiles.
+                    <br>
+                    Par exemple, si la note est 3, affichez <code>***__</code>.
+                    <br>
+                    Pour afficher les étoiles, utiliser le code Unicode :
+                    <pre><code class="language-c">printf("\u2605"); // ★
+printf("\u2606"); // ☆</code></pre>
+                </li>
+            </ol>
+        </div>
+    </section>
+
+    <section>
+        <h3>Les boucles imbriquées</h3>
+        <p>
+            Il est possible d'imbriquer des boucles les unes dans les autres pour réaliser des traitements plus complexes.
+        </p>
+        <pre><code class="language-c">for (int i = 0; i < 10; i++) {
+    for (int j = 0; j < 10; j++) {
+        printf("i = %d, j = %d\n", i, j);
+    }
+}</code></pre>
+        <p>
+            Ces boucles <code>for</code> imbriquées vont afficher les nombres de 0 à 9 pour <code>i</code> et pour
+            <code>j</code>.
+        </p>
+        <p>
+            Cela peut permettre de parcourir les éléments d'un <strong>tableau à deux dimensions</strong> ou de réaliser
+            des calculs mathématiques plus complexes.
+        </p>
+    </section>
+
+    <section>
+        <h3>Les boucles et les tableaux</h3>
+        <p>
+            Il est possible d'utiliser des boucles pour parcourir les éléments d'un tableau.
+        </p>
+        <pre><code class="language-c">int array[10] = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9};
+for (int i = 0; i < 10; i++) {
+    printf("array[%d] = %d\n", i, array[i]);
+}</code></pre>
+        <p>
+            Cette boucle <code>for</code> va afficher les éléments du tableau <code>array</code>.
+        </p>
+    </section>
+
+    <section>
+        <h3>Les boucles et les chaînes de caractères</h3>
+        <p>
+            Il est possible d'utiliser des boucles pour parcourir les caractères d'une chaîne de caractères.
+        </p>
+        <pre><code class="language-c">char string[] = "Hello, World!";
+for (int i = 0; string[i] != '\0'; i++) {
+    printf("string[%d] = %c\n", i, string[i]);
+}</code></pre>
+        <p>
+            Cette boucle <code>for</code> va afficher les caractères de la chaîne de caractères <code>string</code>.
+        </p>
+    </section>
+
+    <section>
+        <h3>Exercice - Palindrome</h3>
+        <div class="instructions">
+            <ul>
+                <li>
+                    Écrire un programme en langage C qui demande à l'utilisateur de saisir une chaîne de caractères et qui
+                    affiche si cette chaîne est un palindrome ou non.
+                </li>
+                <li>
+                    Un <strong>palindrome</strong> est une chaîne de caractères qui se lit de la même manière de gauche à
+                    droite et de droite à gauche.
+                </li>
+                <li>
+                    Exemple d'exécution :
+                    <pre><code class="language-none">Entrez une chaîne de caractères : kayak
+La chaîne "kayak" est un palindrome.</code></pre>
+                </li>
+            </ul>
+        </div>
+    </section>
+
+    <section>
+        <h3>Exercice - Force mot de passe</h3>
+        <div class="instructions">
+            <ul>
+                <li>
+                    Écrire un programme en langage C qui demande à l'utilisateur de saisir un mot de passe.
+                </li>
+                <li>
+                    Le mot de passe doit contenir au moins 8 caractères.
+                </li>
+                <li>
+                    Le mot de passe doit contenir au moins une lettre majuscule.
+                </li>
+                <li>
+                    Le mot de passe doit contenir au moins une lettre minuscule.
+                </li>
+                <li>
+                    Le mot de passe doit contenir au moins un chiffre.
+                </li>
+                <li>
+                    Le mot de passe doit contenir au moins un caractère spécial parmi <code>!@#$%^&*()</code>.
+                </li>
+                <li>
+                    Exemple d'exécution :
+                    <pre><code class="language-none">Entrez un mot de passe : Password123!
+Le mot de passe est valide.</code></pre>
+                </li>
+            </ul>
+        </div>
+    </section>
+
+    <section>
+        <h3>Exercice - Table de multiplication</h3>
+        <div class="instructions">
+            <ol>
+                <li>
+                    Écrire un programme en langage C qui affiche la table de multiplication des nombres de 1 à 10.
+                </li>
+            </ol>
+        </div>
+    </section>
+
+    <section>
+        <h3>Exercice - Calcul mentale</h3>
+        <div class="instructions">
+            <ol>
+                <li>
+                    Écrire un programme en langage C qui demande à l'utilisateur de résoudre une multiplication
+                    avec des nombres aléatoires entre 1 et 10.
+                </li>
+                <li>
+                    Afficher un message pour indiquer si la réponse est correcte ou non.
+                </li>
+                <li>
+                    Demander au début de la partie combien de questions l'utilisateur souhaite résoudre.
+                </li>
+                <li>
+                    Afficher le score à la fin de la partie.
+                </li>
+            </ol>
+        </div>
+    </section>
+
+    <section>
+        <h3>Exercice - Suite de Fibonacci</h3>
+        <p>
+            La suite de Fibonacci est une suite de nombres entiers dans laquelle chaque terme est la somme des deux termes
+            qui le précèdent.
+        </p>
+        <p>
+            Les premiers termes de la suite de Fibonacci sont : 0, 1, 1, 2, 3, 5, 8, 13, 21, 34, ...
+        </p>
+        <div class="instructions">
+            <ol>
+                <li>
+                    Écrire un programme en langage C qui affiche les 20 premiers termes de la suite de Fibonacci.
+                </li>
+                <li>
+                    Améliorer le programme pour demander à l'utilisateur de saisir un nombre <code>n</code> et
+                    d'afficher les <code>n</code> premiers termes de la suite de Fibonacci.
+                </li>
+            </ol>
+        </div>
+    </section>
+
+    <section>
+        <h3>Exercice - FizzBuzz</h3>
+        <p>
+            Le jeu FizzBuzz est un jeu de mathématiques pour les enfants.
+        </p>
+        <p>
+            Les joueurs comptent en alternance en remplaçant les nombres multiples de 3 par le mot <code>Fizz</code> et
+            les nombres multiples de 5 par le mot <code>Buzz</code>.
+        </p>
+        <p>
+            Les nombres multiples de 3 et de 5 sont remplacés par le mot <code>FizzBuzz</code>.
+        </p>
+        <p>
+            Exemple de jeu :
+            <pre><code class="language-none">1, 2, Fizz, 4, Buzz, Fizz, 7, 8, Fizz, Buzz, 11, Fizz, 13, 14, FizzBuzz, 16, 17, Fizz, 19, Buzz</code></pre>
+        </p>
+        <div class="instructions">
+            <ol>
+                <li>
+                    Écrire un programme en langage C qui affiche les nombres de 1 à 100.
+                </li>
+                <li>
+                    Remplacer les nombres multiples de 3 par le mot <code>Fizz</code>.
+                </li>
+                <li>
+                    Remplacer les nombres multiples de 5 par le mot <code>Buzz</code>.
+                </li>
+                <li>
+                    Remplacer les nombres multiples de 3 et de 5 par le mot <code>FizzBuzz</code>.
+                </li>
+            </ol>
+        </div>
+    </section>
+
+    <section>
+        <h3>Conjecture de Syracuse</h3>
+        <p>
+            La conjecture de Syracuse est une suite d'entiers définie de la manière suivante :
+        </p>
+        <ul>
+            <li>
+                On part d'un entier <code>n</code> quelconque.
+            </li>
+            <li>
+                Si <code>n</code> est pair, on le divise par 2.
+            </li>
+            <li>
+                Si <code>n</code> est impair, on le multiplie par 3 et on ajoute 1.
+            </li>
+            <li>
+                On répète l'opération jusqu'à obtenir 1.
+            </li>
+        </ul>
+        <p>
+            Exemple de suite de Syracuse pour <code>n = 5</code> :
+            <pre><code class="language-none">5, 16, 8, 4, 2, 1</code></pre>
+        </p>
+        <div class="instructions">
+            <ol>
+                <li>
+                    Écrire un programme en langage C qui affiche les termes de la suite de Syracuse pour un entier
+                    <code>n</code> saisi par l'utilisateur.
+                </li>
+                <li>
+                    Afficher le temps de vol (nombre de termes avant d'atteindre 1).
+                </li>
+                <li>
+                    Afficher l'altitude maximale (valeur maximale atteinte par la suite).
+                </li>
+            </ol>
+        </div>
+    </section>
+
+</section>

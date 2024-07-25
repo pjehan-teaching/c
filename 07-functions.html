@@ -1,0 +1,165 @@
+<section id="functions">
+
+    <section>
+        <h2>Les fonctions</h2>
+    </section>
+
+    <section>
+        <h3>Les fonctions en C</h3>
+        <p>
+            Les fonctions en C sont des blocs de code qui peuvent être appelés pour effectuer une tâche spécifique. Elles
+            permettent de diviser un programme en plusieurs parties plus petites et plus faciles à gérer.
+        </p>
+        <pre><code class="language-c">void say_hello() {
+    printf("Hello, World!\n");
+}
+
+int main() {
+    say_hello();
+    return 0;
+}</code></pre>
+        <p>
+            Cette fonction affiche le message <code>Hello, World!</code> à l'écran. Elle est ensuite appelée dans la
+            fonction <code>main</code> pour être exécutée.
+        </p>
+    </section>
+
+    <section>
+        <h3>Les paramètres de fonction</h3>
+        <p>
+            Les fonctions peuvent prendre des paramètres en entrée pour effectuer des opérations spécifiques. Ces
+            paramètres sont déclarés entre les parenthèses de la fonction.
+        </p>
+        <pre><code class="language-c">void greet(char name[]) {
+    printf("Hello, %s!\n", name);
+}
+
+int main() {
+    greet("Alice");
+    greet("Bob");
+    return 0;
+}</code></pre>
+        <p>
+            Cette fonction prend un paramètre <code>name</code> de type chaîne de caractères et affiche un message de
+            salutation personnalisé. Elle est ensuite appelée avec les noms <code>Alice</code> et <code>Bob</code>.
+        </p>
+    </section>
+
+    <section>
+        <h3>Les valeurs de retour</h3>
+        <p>
+            Les fonctions peuvent retourner une valeur à l'endroit où elles sont appelées. Cette valeur est définie par le
+            type de retour de la fonction.
+        </p>
+        <pre><code class="language-c">int array_sum(int array[]) {
+    int sum = 0;
+    int size = sizeof(array) / sizeof(array[0]);
+
+    for (int i = 0; i < size; i++) {
+        sum += array[i];
+    }
+
+    return sum;
+}
+
+int main() {
+    int numbers[] = {1, 2, 3, 4, 5};
+    int total = array_sum(numbers);
+
+    printf("The sum of the array is %d.\n", total);
+    return 0;
+}</code></pre>
+        <p>
+            Cette fonction calcule la somme des éléments d'un tableau d'entiers. Elle prend en paramètre le tableau
+            <code>numbers</code> et retourne la somme totale.
+        </p>
+    </section>
+
+    <section>
+        <h3>Les prototypes de fonction</h3>
+        <p>
+            Les prototypes de fonction sont des déclarations qui permettent d'<strong>informer le compilateur</strong>
+            de l'existence d'une fonction avant son appel. Ils sont généralement placés en haut du fichier source.
+        </p>
+        <pre><code class="language-c">void say_hello();
+void greet(char name[]);
+int array_sum(int array[]);
+</code></pre>
+        <p>
+            Ces prototypes déclarent les fonctions <code>say_hello</code>, <code>greet</code> et <code>array_sum</code>
+            avant leur utilisation dans le programme.
+        </p>
+    </section>
+
+    <section>
+        <h3>Les prototypes de fonction</h3>
+        <p>
+            Dans l'exemple ci-dessous, la fonction <code>add</code> est définie après la fonction <code>main</code>.<br>
+            En fonction de la <strong>version du compilateur</strong>, la compilation peut échouer avec un message
+            d'erreur indiquant que la fonction <code>add</code> n'est pas déclarée.
+        </p>
+        <p>
+            Cependant, certains compilateurs peuvent
+            <strong>autoriser cette pratique et ne pas détecter l'erreur</strong> lors de l'appel de la fonction
+            <code>add</code>.
+        </p>
+        <pre><code class="language-c">#include &lt;stdio.h&gt;
+
+// Déclarer le prototype de la fonction add ici
+
+int main() {
+    int result = add(3);
+    printf("The sum is %d.\n", result);
+    return 0;
+}
+
+int add(int a, int b) {
+    return a + b;
+}</code></pre>
+        <p>
+            Pour résoudre ce problème, il suffit de déclarer le prototype de la fonction <code>add</code> avant la
+            fonction <code>main</code>.
+        </p>
+    </section>
+
+    <section>
+        <h3>Les fonctions récursives</h3>
+        <p>
+            Les fonctions récursives sont des fonctions qui s'appellent elles-mêmes pour résoudre un problème. Elles
+            utilisent un cas de base pour terminer l'appel récursif.
+        </p>
+        <pre><code class="language-c">int factorial(int n) {
+    if (n == 0) {
+        return 1;
+    } else {
+        return n * factorial(n - 1);
+    }
+}
+
+int main() {
+    int result = factorial(5);
+    printf("The factorial of 5 is %d.\n", result);
+    return 0;
+}</code></pre>
+        <p>
+            Cette fonction calcule le factoriel d'un nombre en utilisant une approche récursive. Elle s'arrête lorsque le
+            nombre atteint zéro.
+        </p>
+    </section>
+
+    <section>
+        <h3>Fonctions récursives</h3>
+        <p>
+            Les fonctions récursives peuvent permettre de remplacer des boucles dans certains cas. Elles peuvent être
+            utilisées pour résoudre des problèmes mathématiques, des problèmes de recherche, des problèmes de tri, etc.
+        </p>
+        <div class="instructions">
+            <ol>
+                <li>
+                    Réécrire le programme de la suite de Fibonacci en utilisant une fonction récursive.
+                </li>
+            </ol>
+        </div>
+    </section>
+
+</section>

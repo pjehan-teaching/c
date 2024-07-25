@@ -1,0 +1,108 @@
+<section id="compiler">
+
+    <section>
+        <h2>Compilateur</h2>
+    </section>
+
+    <section>
+        <h3>Le compilateur</h3>
+        <p>
+            Le <strong>compilateur</strong> est un logiciel qui traduit le code source écrit dans un langage de
+            programmation en un code exécutable par la machine.
+        </p>
+        <div class="container" style="align-items: center">
+            <div class="col">
+                <pre><code class="language-c">#include &lt;stdio.h&gt;
+
+int main() {
+    printf("Hello, World!\n");
+    return 0;
+}</code></pre>
+            </div>
+            <div class="col">
+                ➡️
+            </div>
+            <div class="col">
+                <pre><code class="language-c">01001000011001010110110001101100011011110010110010
+00100000010101110110111101110010011011000110010000
+10000001010111011011110111001001101100011001000000
+01110100011010000110010100100000011011110110111001
+10110001100101011011000110110000100000011000010010
+00000110001001101100011010010110111001100111001000
+01100001011100100110010100100000011011110110111001
+10110001100101011011000110110000100000011000010010</code></pre>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <h3>Le compilateur C</h3>
+        <p>
+            Le compilateur C est un logiciel qui traduit le code source écrit en langage C en un code exécutable par la
+            machine.
+        </p>
+        <p>
+            Il existe de <strong>nombreux compilateurs</strong> C, comme GCC, Clang, MSVC, etc.
+        </p>
+        <p>
+            Nous allons utiliser ensemble le compilateur <strong>GCC</strong> pour compiler nos programmes en langage C.
+        </p>
+        <p>
+            GCC est un compilateur <strong>libre et open source</strong> qui est compatible avec de nombreux
+            systèmes d'exploitation (Linux, Windows, macOS, etc.) et permet de compiler des programmes en langage C
+            dans sa version C99.
+        </p>
+    </section>
+
+    <section>
+        <h3>Installation de GCC</h3>
+        <p>
+            Pour installer GCC, nous allons utiliser un <strong>gestionnaire de paquets</strong> qui va télécharger et
+            installer GCC et ses dépendances.
+        </p>
+        <h4>Windows</h4>
+        <ol>
+            <li>
+                Suivez les étapes d'installation sur le site <a href="https://scoop.sh/" target="_blank">scoop.sh</a>.
+            </li>
+            <li>
+                <pre><code class="language-bash">scoop install gcc</code></pre>
+            </li>
+        </ol>
+        <h4>MacOS</h4>
+        <ol>
+            <li>
+                Suivez les étapes d'installation sur le site <a href="https://brew.sh/" target="_blank">brew.sh</a>.
+            </li>
+            <li>
+                <pre><code class="language-bash">brew install gcc</code></pre>
+            </li>
+        </ol>
+        <h4>Linux</h4>
+        <pre><code class="language-bash">sudo apt install gcc</code></pre>
+    </section>
+
+    <section>
+        <h3>Compilation d'un programme</h3>
+        <p>
+            Pour compiler un programme en langage C avec GCC, vous devez exécuter la commande suivante :
+        </p>
+        <pre><code class="language-bash">gcc -std=c99 hello.c -o hello</code></pre>
+        <p>
+            Cette commande va compiler le fichier <code>hello.c</code> et générer un exécutable nommé <code>hello</code>.
+        </p>
+        <p>
+            Pour exécuter le programme, vous devez exécuter la commande suivante :
+        </p>
+        <pre><code class="language-bash">./hello</code></pre>
+        <p>
+            Cette commande va exécuter le programme <code>hello</code> et afficher le message <code>Hello, World!</code>.
+        </p>
+        <p>
+            Étant donné que nous allons souvent compiler et exécuter des programmes en langage C, nous pouvons exécuter
+            ces deux commandes en une seule fois :
+        </p>
+        <pre><code class="language-bash">gcc -std=c99 hello.c -o hello && ./hello</code></pre>
+    </section>
+
+</section>

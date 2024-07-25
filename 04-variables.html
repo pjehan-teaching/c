@@ -1,0 +1,437 @@
+<section id="variables">
+
+    <section>
+        <h2>Variables</h2>
+    </section>
+
+    <section>
+        <h3>Les variables en C</h3>
+        <p>
+            Les <strong>variables</strong> en C sont des emplacements de mémoire qui permettent de stocker des valeurs.
+        </p>
+        <p>
+            Chaque variable en C possède un <strong>type</strong> qui définit le format de la valeur stockée et un <strong>nom</strong> qui permet de la retrouver.
+        </p>
+        <p>
+            Voici quelques types de variables en C :
+        </p>
+        <ul>
+            <li>Les <strong>entiers</strong> (int) pour stocker des nombres entiers (positifs ou négatifs)</li>
+            <li>Les <strong>réels</strong> (float, double) pour stocker des nombres à virgule</li>
+            <li>Les <strong>caractères</strong> (char) pour stocker des caractères</li>
+            <li>
+                Les <strong>booléens</strong> (bool) pour stocker des valeurs booléennes (vrai ou faux).<br>
+                Les booléens ont été ajoutés dans la norme C99 et sont définis dans la bibliothèque <code>stdbool.h</code>.
+            </li>
+            <li>Les <strong>tableaux</strong> (int[], float[], char[], etc.) pour stocker plusieurs valeurs</li>
+            <li>Les <strong>pointeurs</strong> (int*, float*, char*, etc.) pour stocker des adresses mémoire</li>
+            <li>...</li>
+        </ul>
+    </section>
+
+    <section>
+        <h3>Déclaration de variables</h3>
+        <p>
+            Pour déclarer une variable en C, il faut préciser son <strong>type</strong> suivi de son <strong>nom</strong> :
+        </p>
+        <pre><code class="language-c">int age;</code></pre>
+        <p>
+            Cette instruction déclare une variable de type <code>int</code> (entier) nommée <code>age</code>.
+        </p>
+        <p>
+            Il est également possible d'initialiser une variable lors de sa déclaration :
+        </p>
+        <pre><code class="language-c">int age = 42;</code></pre>
+        <p>
+            Cette instruction déclare une variable de type <code>int</code> nommée <code>age</code> et lui affecte la valeur <code>42</code>.
+        </p>
+        <p>
+            Le langage C est fortement <strong>typé</strong>, ce qui signifie que chaque variable doit être déclarée
+            avec un type spécifique et que ce type ne peut pas être modifié par la suite :
+        </p>
+        <pre><code class="language-c">int age = 42;
+age = "42"; // Erreur de compilation</code></pre>
+        <div class="gcc-console">
+            <span class="gcc-warning">warning: assignment to ‘int’ from ‘char *’ makes integer from pointer without a cast</span>
+        </div>
+    </section>
+
+    <section>
+        <h3>Constantes</h3>
+        <p>
+            Les <strong>constantes</strong> en C sont des valeurs qui ne peuvent pas être modifiées une fois définies.
+        </p>
+        <p>
+            Pour déclarer une constante en C, il faut utiliser le mot-clé <code>const</code> suivi du type de la constante
+            et de son nom :
+        </p>
+        <pre><code class="language-c">const int AGE = 42;</code></pre>
+        <p>
+            Par convention, les noms des constantes en C sont écrits en majuscules pour les distinguer des variables.
+        </p>
+        <p>
+            Comme son nom l'indique, une constante ne peut pas être modifiée :
+        </p>
+        <pre><code class="language-c">const int AGE = 42;
+AGE = 43; // Erreur de compilation</code></pre>
+        <div class="gcc-console">
+            <span class="gcc-error">error: assignment of read-only variable ‘AGE’</span>
+        </div>
+    </section>
+
+    <section>
+        <h3>Afficher une variable</h3>
+        <p>
+            Pour afficher un message en C, il faut utiliser la fonction <code>printf</code> qui permet d'afficher du
+            texte. Cette fonction est définie dans la bibliothèque standard <code>stdio.h</code> :
+        </p>
+        <pre><code class="language-c">#include &lt;stdio.h&gt;
+
+int main() {
+    printf("Hello, World!\n");
+    return 0;
+}</code></pre>
+        <p>
+            Cette instruction affiche le message <code>Hello, World!</code> suivi d'un saut de ligne.
+        </p>
+        <p>
+            Il est également possible d'afficher une variable en utilisant un <strong>format spécifique</strong> :
+        </p>
+        <pre><code class="language-c">int age = 42;
+printf("J'ai %d ans\n", age);</code></pre>
+    </section>
+
+    <section>
+        <h3>Afficher une variable - Séquences d'échappement</h3>
+        <p>
+            En C, il est possible d'utiliser des <strong>séquences d'échappement</strong> pour afficher des caractères
+            spéciaux :
+        </p>
+        <ul>
+            <li><code>\n</code> pour un saut de ligne</li>
+            <li><code>\t</code> pour une tabulation</li>
+            <li><code>\\</code> pour un antislash</li>
+            <li><code>\"</code> pour un guillemet</li>
+            <li><code>\'</code> pour une apostrophe</li>
+            <li>...</li>
+        </ul>
+        <p>
+            Le caractère antislash <code class="language-c">\</code> (backslash en anglais) est utilisé dans de nombreux langages de
+            programmation pour introduire des séquences d'échappement.
+        </p>
+    </section>
+
+    <section>
+        <h3>Formats de variables</h3>
+        <p>
+            Voici quelques formats de variables couramment utilisés en C :
+        </p>
+        <ul>
+            <li><code>%d</code> pour afficher un entier</li>
+            <li><code>%f</code> pour afficher un réel</li>
+            <li><code>%c</code> pour afficher un caractère</li>
+            <li><code>%s</code> pour afficher une chaîne de caractères</li>
+            <li><code>%p</code> pour afficher un pointeur</li>
+            <li>...</li>
+        </ul>
+    </section>
+
+    <section>
+        <h3>Conversion de types (casting)</h3>
+        <p>
+            En C, il est possible de convertir un type de variable en un autre type de variable en utilisant le
+            <strong>casting</strong>.
+        </p>
+        <p>
+            Pour convertir une variable en un autre type, il suffit de préciser le type de conversion entre parenthèses
+            avant la variable à convertir :
+        </p>
+        <pre><code class="language-c">float grade = 18.5;
+int score = (int) grade; // 18</code></pre>
+        <p>
+            Cette instruction convertit la variable
+            <code>grade</code> de type <code>float</code> en un entier <code>int</code>.
+        </p>
+        <p>
+            Dans cet exemple, la conversion est faite <strong>explicitement</strong> en précisant le type de conversion
+            entre parenthèses, mais elle peut également être faite <strong>implicitement par le compilateur</strong>.
+        </p>
+    </section>
+
+    <section>
+        <h3>Saisi utilisateur</h3>
+        <p>
+            Pour lire une valeur saisie par l'utilisateur en C, il faut utiliser la fonction <code>scanf</code> qui
+            permet de lire une valeur depuis l'entrée standard (clavier). Cette fonction est définie dans la bibliothèque
+            standard <code>stdio.h</code> :
+        </p>
+        <pre><code class="language-c">#include &lt;stdio.h&gt;
+
+int main() {
+    int age;
+    printf("Quel âge avez-vous ? ");
+    scanf("%d", &age);
+    printf("Vous avez %d ans\n", age);
+    return 0;
+}</code></pre>
+        <p>
+            Cette instruction demande à l'utilisateur de saisir son âge, lit la valeur saisie et l'affiche à l'écran.
+        </p>
+        <p>
+            Il est important de préciser l'adresse mémoire de la variable à lire en utilisant l'opérateur <code>&</code>.
+            Nous reviendrons sur cette notion d'adresse mémoire lorsque nous aborderons les pointeurs en C.
+        </p>
+    </section>
+
+    <section>
+        <h3>Calculs</h3>
+        <p>
+            En C, il est possible d'effectuer des <strong>calculs</strong> en utilisant les opérateurs arithmétiques
+            suivants :
+        </p>
+        <ul>
+            <li><code>+</code> pour l'addition</li>
+            <li><code>-</code> pour la soustraction</li>
+            <li><code>*</code> pour la multiplication</li>
+            <li><code>/</code> pour la division</li>
+            <li><code>%</code> pour le modulo (reste de la division)</li>
+        </ul>
+        <p>
+            Il est également possible de combiner ces opérateurs pour effectuer des calculs plus complexes :
+        </p>
+        <pre><code class="language-c">int sum = 1 + 2; // 3
+int difference = 5 - 3; // 2
+int product = 2 * 3; // 6
+int division = 10 / 3; // 3
+int remainder = 10 % 3; // 1</code></pre>
+    </section>
+
+    <section>
+        <h3>Exercice - Circonférence d'un cercle</h3>
+        <div class="instructions">
+            <ul>
+                <li>
+                    Écrire un programme en langage C qui demande à l'utilisateur de saisir le rayon d'un cercle et qui
+                    affiche la circonférence de ce cercle.
+                </li>
+                <li>
+                    La formule pour calculer la circonférence d'un cercle est la suivante : <code>C = 2 * π * r</code>
+                    où <code>C</code> est la circonférence, <code>π</code> est le nombre pi (3.14159) et <code>r</code> est
+                    le rayon du cercle.
+                </li>
+                <li>
+                    Exemple d'exécution :
+                    <pre><code class="language-none">Quel est le rayon du cercle ? 5
+La circonférence du cercle est 31.4159</code></pre>
+                </li>
+            </ul>
+        </div>
+    </section>
+
+    <section>
+        <h3>Exercice - Conversion unités de mesure</h3>
+        <div class="instruction">
+            <ul>
+                <li>
+                    Écrire un programme en langage C qui demande à l'utilisateur de saisir une longueur en mètres et qui
+                    affiche cette longueur en kilomètres, en centimètres et en millimètres.
+                </li>
+                <li>
+                    Exemple d'exécution :
+                    <pre><code class="language-none">Quelle est la longueur en mètres ? 1000
+1000 mètres équivaut à 1 kilomètre, 100000 centimètres et 1000000 millimètres.</code></pre>
+            </ul>
+        </div>
+    </section>
+
+    <section>
+        <h3>Incrémentation</h3>
+        <p>
+            L'<strong>incrémentation</strong> est une opération qui consiste à augmenter la valeur d'une variable de 1.
+        </p>
+        <p>
+            En C, il est possible d'incrémenter une variable en utilisant l'opérateur <code>++</code> :
+        </p>
+        <pre><code class="language-c">int count = 0;
+count++; // 1</code></pre>
+        <p>
+            Cette opération est équivalente à l'addition de 1 à la variable :
+        </p>
+        <pre><code class="language-c">count = count + 1; // 1</code></pre>
+        <p>
+            Il est également possible d'incrémenter une variable d'une valeur spécifique :
+        </p>
+        <pre><code class="language-c">count += 10; // 10</code></pre>
+        <p>
+            Enfin, il est possible de décrémenter une variable en utilisant l'opérateur <code>--</code> :
+        </p>
+        <pre><code class="language-c">count--; // -1</code></pre>
+    </section>
+
+    <section>
+        <h3>Les tableaux</h3>
+        <p>
+            Les <strong>tableaux</strong> en C sont des collections de variables du même type qui sont stockées de
+            manière contiguë en mémoire.
+        </p>
+        <p>
+            Pour déclarer un tableau en C, il faut préciser son <strong>type</strong>, son <strong>nom</strong> et sa
+            <strong>taille</strong> :
+        </p>
+        <pre><code class="language-c">int scores[5];</code></pre>
+    </section>
+
+    <section>
+        <h3>Manipulation des tableaux</h3>
+        <p>
+            Pour accéder à un élément d'un tableau en C, il faut utiliser son <strong>indice</strong> (position) qui
+            commence à <strong>zéro</strong> :
+        </p>
+        <pre><code class="language-c">int scores[5] = {10, 20, 30, 40, 50};
+int first = scores[0]; // 10
+int last = scores[4]; // 50</code></pre>
+        <p>
+            Il est également possible de modifier un élément d'un tableau en C en utilisant son indice :
+        </p>
+        <pre><code class="language-c">int scores[5] = {10, 20, 30, 40, 50};
+scores[0] = 100; // {100, 20, 30, 40, 50}</code></pre>
+    </section>
+
+    <section>
+        <h3>Chaînes de caractères</h3>
+        <p>
+            Les <strong>chaînes de caractères</strong> en C sont des tableaux de caractères terminés par un caractère
+            spécial appelé <strong>caractère nul</strong> (<code>'\0'</code>).
+        </p>
+        <p>
+            Pour déclarer une chaîne de caractères en C, il faut préciser son <strong>type</strong> et son <strong>nom</strong> :
+        </p>
+        <pre><code class="language-c">char message[6] = "Hello";</code></pre>
+        <p>
+            Cette instruction déclare une chaîne de caractères de taille 6 (5 caractères + 1 caractère nul) nommée
+            <code>message</code> et lui affecte la valeur <code>Hello</code>.
+        </p>
+        <p>
+            Il serait également possible de déclarer chaque caractère individuellement :
+        </p>
+        <pre><code class="language-c">char message[6] = {'H', 'e', 'l', 'l', 'o', '\0'};</code></pre>
+        <p>
+            Cependant, il est également possible de déclarer une chaîne de caractères sans préciser sa taille :
+        </p>
+        <pre><code class="language-c">char message[] = "Hello";</code></pre>
+        <footer>
+            <a href="#" class="info">
+                <code>'</code> est utilisé pour définir un caractère et <code>"</code> une chaîne de caractères.
+            </a>
+        </footer>
+    </section>
+
+    <section>
+        <h3>Chaînes de caractères</h3>
+        <pre><code class="language-c">#include &lt;stdio.h&gt;
+
+int main() {
+    char message[] = "Hello";
+
+    printf("%s\n", message); // Hello
+    printf("%x\n", message[5]); // 0
+
+    return 0;
+}</code></pre>
+        <p>
+            Cependant, on ne peut pas déclarer une chaîne de caractères sans préciser sa taille et lui affecter une
+            valeur :
+        </p>
+        <pre><code class="language-c">char message[]; // Erreur de compilation</code></pre>
+    </section>
+
+    <section>
+        <h3>Chaînes de caractères - concaténation</h3>
+        <pre><code class="language-c">#include &lt;stdio.h&gt;
+
+int main() {
+    char message1[] = "Hello";
+    char message2[] = "World";
+    char message3[14];
+
+    sprintf(message3, "%s, %s!", message1, message2);
+
+    printf("%s\n", message3); // Hello, World!
+
+    return 0;
+}</code></pre>
+        <p>
+            La fonction <code>sprintf</code> permet de concaténer deux chaînes de caractères dans une troisième chaîne.
+        </p>
+        <p>
+            Il serait également possible d'utiliser la fonction <code>strcat</code> de la librairie <code>string.h</code>
+            pour concaténer deux chaînes de caractères.
+        </p>
+    </section>
+
+    <section>
+        <h3>Exercice - Convertisseur de température</h3>
+        <div class="instructions">
+            <ol>
+                <li>
+                    Créer un programme en langage C qui demande à l'utilisateur de saisir une température en degrés
+                    Celsius.
+                </li>
+                <li>
+                    Convertir cette température en degrés Fahrenheit.<br>
+                    La formule pour convertir une température de degrés Celsius en degrés Fahrenheit est la suivante :
+                    <code>F = C * 9/5 + 32</code> où <code>F</code> est la température en degrés Fahrenheit et
+                    <code>C</code> est la température en degrés Celsius.
+                </li>
+                <li>
+                    Exemple d'exécution :
+                    <pre><code class="language-none">Quelle est la température en degrés Celsius ? 0
+0 degrés Celsius équivaut à 32 degrés Fahrenheit.</code></pre>
+                </li>
+            </ol>
+        </div>
+    </section>
+
+    <section>
+        <h3>Exercice - Aire d'un cercle</h3>
+        <div class="instructions">
+            <ol>
+                <li>
+                    Créer un programme en langage C qui demande à l'utilisateur de saisir le rayon d'un cercle.
+                </li>
+                <li>
+                    Calculer l'aire de ce cercle.<br>
+                    La formule pour calculer l'aire d'un cercle est la suivante : <code>A = π * r²</code> où <code>A</code>
+                    est l'aire, <code>π</code> est le nombre pi (3.14159) et <code>r</code> est le rayon du cercle.
+                </li>
+                <li>
+                    Exemple d'exécution :
+                    <pre><code class="language-none">Quel est le rayon du cercle ? 5
+L'aire du cercle est 78.5398</code></pre>
+                </li>
+            </ol>
+        </div>
+    </section>
+
+    <section>
+        <h3>Exercice - ETA</h3>
+        <div class="instructions">
+            <ol>
+                <li>
+                    Créer un programme en langage C qui demande à l'utilisateur de saisir une distance en kilomètres et
+                    une vitesse en kilomètres par heure.
+                </li>
+                <li>
+                    Calculer le temps de trajet en heures et en minutes.
+                </li>
+                <li>
+                    Exemple d'exécution :
+                    <pre><code class="language-none">Quelle est la distance en kilomètres ? 100
+Quelle est la vitesse en kilomètres par heure ? 50
+Le temps de trajet est de 2 heures et 0 minutes.</code></pre>
+                </li>
+            </ol>
+        </div>
+    </section>
+
+</section>

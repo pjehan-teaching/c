@@ -1,0 +1,173 @@
+<section id="conditions">
+
+    <section>
+        <h2>Les conditions</h2>
+    </section>
+
+    <section>
+        <h3>Les conditions en C</h3>
+        <p>
+            Les conditions en C sont des structures de contrôle qui permettent d'exécuter un bloc d'instructions si une
+            condition est vraie.
+        </p>
+        <pre><code class="language-c">int number = 42;
+
+if (number == 42) {
+    printf("The answer to the Ultimate Question of Life, the Universe, and Everything is 42.\n");
+}</code></pre>
+        <p>
+            Cette condition va afficher le message si la variable <code>number</code> est égale à 42.
+        </p>
+    </section>
+
+    <section>
+        <h3>Les opérateurs de comparaison</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>Opérateur</th>
+                    <th>Description</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><code>==</code></td>
+                    <td>Égal à</td>
+                </tr>
+                <tr>
+                    <td><code>!=</code></td>
+                    <td>Différent de</td>
+                </tr>
+                <tr>
+                    <td><code>&lt;</code></td>
+                    <td>Inférieur à</td>
+                </tr>
+                <tr>
+                    <td><code>&lt;=</code></td>
+                    <td>Inférieur ou égal à</td>
+                </tr>
+                <tr>
+                    <td><code>&gt;</code></td>
+                    <td>Supérieur à</td>
+                </tr>
+                <tr>
+                    <td><code>&gt;=</code></td>
+                    <td>Supérieur ou égal à</td>
+                </tr>
+            </tbody>
+        </table>
+        <div class="instructions">
+            <ol>
+                <li>
+                    Demander à l'utilisateur de saisir son âge.
+                </li>
+                <li>
+                    Afficher si l'utilisateur est majeur ou non.
+                </li>
+            </ol>
+        </div>
+    </section>
+
+    <section>
+        <h3>Les opérateurs logiques</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>Opérateur</th>
+                    <th>Description</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><code>&&</code></td>
+                    <td>Et</td>
+                </tr>
+                <tr>
+                    <td><code>||</code></td>
+                    <td>Ou</td>
+                </tr>
+                <tr>
+                    <td><code>!</code></td>
+                    <td>Non</td>
+                </tr>
+            </tbody>
+        </table>
+        <div class="instructions">
+            <ol>
+                <li>
+                    Demander à l'utilisateur de saisir un nombre.
+                </li>
+                <li>
+                    Afficher si le nombre est positif et pair.
+                </li>
+            </ol>
+        </div>
+    </section>
+
+    <section>
+        <h3>Imbrications</h3>
+        <p>
+            Il est possible d'imbriquer des conditions pour réaliser des tests plus complexes.
+        </p>
+        <p>
+            Par exemple, si nous souhaitons calculer un montant de réduction en fonction de l'âge et du nombre de
+            produits achetés, nous pouvons écrire le code suivant :
+        </p>
+        <div class="container">
+            <div class="col">
+                <h4>Avec des conditions imbriquées</h4>
+                <pre><code class="language-c">int age = 25;
+int quantity = 3;
+float discount = 0.0;
+
+if (age < 18) {
+    discount = 0.2;
+} else if (quantity > 3) {
+    if (age >= 18 && age < 65) {
+        discount = 0.1;
+    } else {
+        discount = 0.15;
+    }
+}</code></pre>
+            </div>
+            <div class="col">
+                <h4>Avec des conditions combinées</h4>
+                <pre><code class="language-c">if (age < 18) {
+    discount = 0.2;
+} else if (quantity > 3 && (age >= 18 && age < 65)) {
+    discount = 0.1;
+} else if (quantity > 3) {
+    discount = 0.15;
+}</code></pre>
+            </div>
+        </div>
+        <div class="instructions">
+            <ol>
+                <li>
+                    Voyez-vous d'autres façons d'écrire ce code ?
+                </li>
+            </ol>
+        </div>
+    </section>
+
+    <section>
+        <h3>Exercice - Analyse de texte</h3>
+        <div class="instructions">
+            <ol>
+                <li>
+                    Demander à l'utilisateur de saisir un mot.
+                </li>
+                <li>
+                    Afficher le nombre de caractères du mot.
+                </li>
+                <li>
+                    Indiquer si le mot commence par une majuscule.
+                </li>
+                <li>
+                    Indiquer si le mot se termine par une voyelle.
+                </li>
+            </ol>
+        </div>
+    </section>
+
+</section>
