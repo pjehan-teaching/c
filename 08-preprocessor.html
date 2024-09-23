@@ -1,7 +1,73 @@
-<section id="headers">
+<section id="preprocessor">
 
     <section>
-        <h2>Les fichiers d'en-tête</h2>
+        <h2>Le préprocesseur</h2>
+    </section>
+
+    <section>
+        <h3>Le préprocesseur en C</h3>
+        <p>
+            Le préprocesseur en C est une étape du processus de compilation qui traite les directives de préprocesseur
+            <strong>avant que le code source ne soit compilé</strong>.
+        </p>
+        <p>
+            Les directives de préprocesseur sont des instructions qui commencent par le caractère <code>#</code> et qui
+            sont utilisées pour inclure des fichiers d'en-tête, définir des macros et effectuer d'autres tâches de
+            prétraitement.
+        </p>
+        <p>
+            Voici quelques exemples de directives de préprocesseur en C :
+        </p>
+        <ul>
+            <li><code>#include</code> : inclut un fichier d'en-tête</li>
+            <li><code>#define</code> : définit une macro</li>
+            <li><code>#ifdef</code> : vérifie si une macro est définie</li>
+            <li><code>#ifndef</code> : vérifie si une macro n'est pas définie</li>
+            <li><code>#endif</code> : termine un bloc conditionnel</li>
+        </ul>
+    </section>
+
+    <section>
+        <h3>Les macros</h3>
+        <p>
+            Les macros en C sont des <strong>identificateurs symboliques</strong> qui sont définis à l'aide de la directive
+            <code>#define</code>. Les macros sont remplacées par leur valeur lors de la compilation.
+        </p>
+        <p>
+            Les macros sont souvent utilisées pour définir des <strong>constantes</strong>, des
+            <strong>fonctions inline</strong> et des <strong>blocs</strong> de code réutilisables.
+        </p>
+        <p>
+            Voici un exemple de macro qui définit une constante :
+        </p>
+        <pre><code class="language-c">#define PI 3.14159</code></pre>
+        <p>
+            Et un autre exemple pour une fonction inline :
+        </p>
+        <pre><code class="language-c">#define max(a, b) ((a) &gt; (b) ? (a) : (b))</code></pre>
+    </section>
+
+    <section>
+        <h3>Les conditions</h3>
+        <p>
+            Les directives de préprocesseur en C peuvent être utilisées pour réaliser des tests conditionnels à l'aide des
+            directives <code>#if</code>, <code>#elif</code>, <code>#else</code> et <code>#endif</code>.
+        </p>
+        <p>
+            Par exemple, vous pouvez utiliser des conditions pour inclure ou exclure du code en fonction de la valeur d'une
+            macro.
+        </p>
+        <pre><code class="language-c">#define DEBUG 1
+
+#if DEBUG
+    printf("Debug mode enabled.\n");
+#else
+    printf("Debug mode disabled.\n");
+#endif</code></pre>
+        <p>
+            Cette technique est également souvent utilisée pour créer des <strong>include guards</strong>
+            dans les fichiers d'en-tête (nous verrons cela dans quelques instants).
+        </p>
     </section>
 
     <section>
