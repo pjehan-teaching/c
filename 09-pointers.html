@@ -20,11 +20,32 @@ printf("Value: %d\n", *pointer);  // Affiche: Value: 42</code></pre>
         <p>
             Le caractère <code>&amp;</code> est utilisé pour obtenir l'adresse d'une variable, tandis que le caractère
             <code>*</code> est utilisé pour accéder à la valeur pointée par un pointeur.
+            Ces caractères sont des "unary operators" ce qui signifie qu'ils sont utilisés avec un seul opérande.
         </p>
         <p>
             Nous pouvons représenter l'exemple ci-dessus avec ce diagramme :
         </p>
         <img src="assets/images/pointers.png" alt="Diagramme de pointeur">
+    </section>
+
+    <section>
+        <h3>Les pointeurs en C</h3>
+        <p>
+            Extrait du livre "The C Programming Language" de Brian W. Kernighan et Dennis M. Ritchie. (page 90)
+        </p>
+        <pre><code class="language-c"> int x = 1, y = 2, z[10];
+ int *ip; /* ip is a pointer to int */
+ ip = &x; /* ip now points to x */
+ y = *ip; /* y is now 1 */
+ *ip = 0; /* x is now 0 */
+ ip = &z[0]; /* ip now points to z[0] */</code></pre>
+        <div class="instructions">
+            <ol>
+                <li>
+                    Dessinez un diagramme similaire à celui de la slide précédente pour l'exemple ci-dessus.
+                </li>
+            </ol>
+        </div>
     </section>
 
     <section>
@@ -55,7 +76,81 @@ printf("Number: %d\n", number); // Affiche: Number: 43</code></pre>
     </section>
 
     <section>
+        <h3>Exercice - Inverser deux variables</h3>
+        <div class="instructions">
+            <ol>
+                <li>
+                    Écrivez une fonction <code>swap</code> en C qui inverse les valeurs de deux variables en utilisant
+                    des pointeurs.
+                </li>
+            </ol>
+        </div>
+    </section>
+
+    <section>
         <h3>Les pointeurs et les tableaux</h3>
+        <p>
+            En C, les tableaux sont des pointeurs vers la première case mémoire du tableau. Cela signifie que le nom d'un
+            tableau est en fait un pointeur constant vers la première case mémoire du tableau.
+        </p>
+        <pre><code class="language-c">int numbers[] = {1, 2, 3, 4, 5};
+int *pointer = numbers;
+
+printf("First element: %d\n", numbers[0]); // Affiche: First element: 1
+printf("First element: %d\n", *pointer);   // Affiche: First element: 1</code></pre>
+        <p>
+            Dans cet exemple, le tableau <code>numbers</code> est un pointeur vers la première case mémoire du tableau.
+            Nous pouvons accéder à la première case du tableau en utilisant l'opérateur de déréférencement <code>*</code>.
+        </p>
+        <div class="container" style="align-items: center">
+            <div class="col">
+                <pre><code class="language-c">int *pointer = &numbers[O]</code></pre>
+            </div>
+            <div class="col"><=></div>
+            <div class="col">
+                <pre><code class="language-c">int *pointer = numbers</code></pre>
+            </div>
+        </div>
+        <div class="container" style="align-items: center">
+            <div class="col">
+                <pre><code class="language-c">numbers[i]</code></pre>
+            </div>
+            <div class="col"><=></div>
+            <div class="col">
+                <pre><code class="language-c">*(numbers + i)</code></pre>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <h3>Les pointeurs et les tableaux</h3>
+        <p>
+            Lorsqu'un tableau est passé en tant que paramètre à une fonction, il est automatiquement converti en un pointeur.
+        </p>
+        <pre><code class="language-c">void print_array(int *array, int size) {
+    for (int i = 0; i < size; i++) {
+        printf("%d ", array[i]);
+    }
+    printf("\n");
+}
+
+int numbers[] = {1, 2, 3, 4, 5};
+int size = sizeof(numbers) / sizeof(numbers[0]); // sizeof(numbers) = 20, sizeof(numbers[0]) = 4
+
+print_array(numbers, size); // Affiche: 1 2 3 4 5</code></pre>
+        <p>
+            Dans cet exemple, la fonction <code>print_array()</code> prend un pointeur vers un tableau d'entiers et sa
+            taille en paramètres. Le tableau <code>numbers</code> est automatiquement converti en un pointeur lorsqu'il
+            est passé à la fonction.
+        </p>
+        <p>
+            La méthode <code>print_array()</code> pourrait également être déclarée comme suit :
+        </p>
+        <pre><code class="language-c">void print_array(int array[], int size)</code></pre>
+    </section>
+
+    <section>
+        <h3>Les tableaux dynamiques</h3>
         <p>
             Les pointeurs en C sont souvent utilisés pour manipuler des tableaux dont la taille est déterminée à
             l'exécution et non à la compilation (par exemple lorsque l'utilisateur saisit la taille du tableau).
