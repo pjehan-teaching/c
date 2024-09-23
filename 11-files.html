@@ -1,7 +1,163 @@
-<section id="pointers">
+<section id="files">
 
     <section>
-        <h2>Les pointeurs</h2>
+        <h2>Les fichiers</h2>
+    </section>
+
+    <section>
+        <h3>Les fichiers en C</h3>
+        <p>
+            Les fichiers en C sont des flux de données qui permettent de lire et d'écrire des informations sur un support de
+            stockage. Ils sont utilisés pour stocker des données de manière permanente et pour communiquer avec des périphériques
+            externes.
+        </p>
+        <p>
+            Voici un exemple de code qui écrit une chaîne de caractères dans un fichier :
+        </p>
+        <pre><code class="language-c">FILE *file = fopen("example.txt", "w");
+if (file != NULL) {
+
+    fprintf(file, "Hello, World!\n");
+    fclose(file);
+}</code></pre>
+        <p>
+            Cet exemple ouvre un fichier nommé <code>example.txt</code> en mode écriture (<code>w</code>), écrit la chaîne de
+            caractères <code>Hello, World!</code> dans le fichier, puis ferme le fichier.
+        </p>
+    </section>
+
+    <section>
+        <h3>Les modes d'ouverture</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>Mode</th>
+                    <th>Description</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><code>r</code></td>
+                    <td>Ouvre un fichier en lecture seulement. Le fichier doit exister.</td>
+                </tr>
+                <tr>
+                    <td><code>w</code></td>
+                    <td>Ouvre un fichier en écriture seulement. Crée un nouveau fichier ou écrase un fichier existant.</td>
+                </tr>
+                <tr>
+                    <td><code>a</code></td>
+                    <td>Ouvre un fichier en écriture seulement. Ajoute des données à la fin du fichier ou crée un nouveau fichier.</td>
+                </tr>
+                <tr>
+                    <td><code>r+</code></td>
+                    <td>Ouvre un fichier en lecture et écriture. Le fichier doit exister.</td>
+                </tr>
+                <tr>
+                    <td><code>w+</code></td>
+                    <td>Ouvre un fichier en lecture et écriture. Crée un nouveau fichier ou écrase un fichier existant.</td>
+                </tr>
+                <tr>
+                    <td><code>a+</code></td>
+                    <td>Ouvre un fichier en lecture et écriture. Ajoute des données à la fin du fichier ou crée un nouveau fichier.</td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+
+    <section>
+        <h3>Les fonctions de gestion de fichiers</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>Fonction</th>
+                    <th>Description</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><code>fopen()</code></td>
+                    <td>Ouvre un fichier et retourne un pointeur de type <code>FILE</code>.</td>
+                </tr>
+                <tr>
+                    <td><code>fclose()</code></td>
+                    <td>Ferme un fichier ouvert.</td>
+                </tr>
+                <tr>
+                    <td><code>fgetc()</code></td>
+                    <td>Lit un caractère à partir d'un fichier.</td>
+                </tr>
+                <tr>
+                    <td><code>fputc()</code></td>
+                    <td>Écrit un caractère dans un fichier.</td>
+                </tr>
+                <tr>
+                    <td><code>fgets()</code></td>
+                    <td>Lit une chaîne de caractères à partir d'un fichier.</td>
+                </tr>
+                <tr>
+                    <td><code>fputs()</code></td>
+                    <td>Écrit une chaîne de caractères dans un fichier.</td>
+                </tr>
+                <tr>
+                    <td><code>fprintf()</code></td>
+                    <td>Écrit une chaîne de caractères formatée dans un fichier.</td>
+                </tr>
+            </tbody>
+        </table>
+        <p>
+            Ces fonctions permettent de manipuler des fichiers en C en effectuant des opérations de lecture et d'écriture.
+        </p>
+    </section>
+
+    <section>
+        <h3>Exemple de lecture de fichier</h3>
+        <div class="container">
+            <div class="col">
+                <pre><code class="language-c" style="font-size: 0.8em">// main.c
+#include &lt;stdio.h&gt;
+
+int main() {
+    FILE *file = fopen("example.txt", "r");
+    char buffer[255];
+
+    if (file != NULL) {
+        while (fgets(buffer, sizeof(buffer), file) != NULL) {
+            printf("%s", buffer);
+        }
+        fclose(file);
+    }
+    return 0;
+}</code></pre>
+            </div>
+            <div class="col">
+                <pre><code class="language-c" style="font-size: 0.8em">// example.txt
+Hello, World!
+This is an example file.
+12345</code></pre>
+            </div>
+        </div>
+        <p>
+            Cet exemple lit le contenu du fichier <code>example.txt</code> ligne par ligne et l'affiche à l'écran. Le fichier
+            contient trois lignes de texte.
+        </p>
+    </section>
+
+    <section>
+        <h3>Exercice</h3>
+        <div class="instructions">
+            <ol>
+                <li>
+                    Créez un fichier nommé <code>numbers.txt</code> contenant une liste de nombres entiers séparés par des espaces.
+                </li>
+                <li>
+                    Écrivez un programme en C qui lit les nombres du fichier et affiche leur somme à l'écran.
+                </li>
+            </ol>
+        </div>
+        <p>
+            Exemple de contenu du fichier <code>numbers.txt</code> :
+        </p>
+        <pre><code class="language-c">1 2 3 4 5</code></pre>
     </section>
 
 </section>

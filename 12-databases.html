@@ -1,0 +1,113 @@
+<section id="databases">
+
+    <section>
+        <h2>Les bases de données</h2>
+    </section>
+
+    <section>
+        <h3>Connexion à une base de données</h3>
+        <p>
+            Pour se connecter à une base de données en C, nous devons utiliser une bibliothèque tierce comme
+            <a href="https://www.sqlite.org/index.html" target="_blank" rel="noopener">SQLite</a> ou
+            <a href="https://dev.mysql.com/doc/c-api/en/" target="_blank" rel="noopener">MySQL</a>. Ces bibliothèques
+            fournissent des fonctions pour exécuter des requêtes SQL et récupérer des résultats.
+        </p>
+        <p>
+            Voici un exemple de connexion à une base de données MySQL en C :
+        </p>
+        <pre style="max-height: 50vh"><code class="language-c">#include &lt;mysql/mysql.h&gt;
+
+int main() {
+    MYSQL *conn = mysql_init(NULL);
+
+    if (conn == NULL) {
+        fprintf(stderr, "mysql_init() failed\n");
+        return 1;
+    }
+
+    if (mysql_real_connect(conn, "localhost", "user", "password", "database", 0, NULL, 0) == NULL) {
+        fprintf(stderr, "mysql_real_connect() failed\n");
+        mysql_close(conn);
+        return 1;
+    }
+
+    printf("Connected to MySQL database\n");
+
+    mysql_close(conn);
+
+    return 0;
+}</code></pre>
+        <p>
+            Cet exemple utilise la bibliothèque MySQL pour se connecter à une base de données MySQL en C. Il initialise
+            une connexion, se connecte à la base de données, affiche un message de confirmation, puis ferme la connexion.
+        </p>
+    </section>
+
+    <section>
+        <h3>Exécution de requêtes SQL</h3>
+        <p>
+            Une fois connecté à une base de données, vous pouvez exécuter des requêtes SQL pour interagir avec les données.
+            Voici un exemple d'exécution d'une requête SELECT en C :
+        </p>
+        <pre style="max-height: 50vh"><code class="language-c">#include &lt;mysql/mysql.h&gt;
+
+int main() {
+    MYSQL *conn = mysql_init(NULL);
+
+    if (conn == NULL) {
+        fprintf(stderr, "mysql_init() failed\n");
+        return 1;
+    }
+
+    if (mysql_real_connect(conn, "localhost", "user", "password", "database", 0, NULL, 0) == NULL) {
+        fprintf(stderr, "mysql_real_connect() failed\n");
+        mysql_close(conn);
+        return 1;
+    }
+
+    if (mysql_query(conn, "SELECT * FROM users")) {
+        fprintf(stderr, "mysql_query() failed\n");
+        mysql_close(conn);
+        return 1;
+    }
+
+    MYSQL_RES *result = mysql_store_result(conn);
+
+    if (result == NULL) {
+        fprintf(stderr, "mysql_store_result() failed\n");
+        mysql_close(conn);
+        return 1;
+    }
+
+    MYSQL_ROW row;
+
+    while ((row = mysql_fetch_row(result))) {
+        printf("%s %s %s\n", row[0], row[1], row[2]);
+    }
+
+    mysql_free_result(result);
+    mysql_close(conn);
+
+    return 0;
+}</code></pre>
+        <p>
+            Cet exemple exécute une requête SELECT pour récupérer toutes les lignes de la table <code>users</code> dans la
+            base de données. Il affiche ensuite les résultats ligne par ligne.
+        </p>
+    </section>
+
+    <section>
+        <h3>Libération des ressources</h3>
+        <p>
+            Lorsque vous avez terminé d'utiliser une connexion à une base de données, vous devez libérer les ressources
+            allouées en fermant la connexion et en libérant la mémoire utilisée par les résultats des requêtes.
+        </p>
+        <pre><code class="language-c">mysql_free_result(result);
+mysql_close(conn);</code></pre>
+        <p>
+            Ces fonctions libèrent respectivement la mémoire allouée pour les résultats des requêtes et ferment la connexion
+            à la base de données.
+        </p>
+    </section>
+
+</section>
