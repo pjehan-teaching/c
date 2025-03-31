@@ -20,8 +20,9 @@
     <section>
         <h3>Manipuler les structures</h3>
         <p>
-            Pour manipuler une structure en C, vous devez d'abord la déclarer en utilisant le mot-clé <code>struct</code> suivi
-            du nom de la structure. Vous pouvez ensuite accéder à ses membres en utilisant l'opérateur <code>.</code>.
+            Pour manipuler une structure en C, vous devez d'abord la déclarer en utilisant le mot-clé
+            <code class="language-c">struct</code> suivi du nom de la structure. Vous pouvez ensuite accéder à ses
+            membres en utilisant l'opérateur <code class="language-c">.</code>.
         </p>
         <pre><code class="language-c">struct Person person;
 
@@ -73,7 +74,7 @@ printf("Birthdate: %d/%d/%d\n", person.birthdate.day, person.birthdate.month, pe
         <p>
             Vous pouvez ensuite allouer de la mémoire pour une structure en utilisant la fonction
             <code class="language-c">malloc()</code> et accéder à ses membres en utilisant l'opérateur
-            <code class="language-c">-&gt;</code>.
+            <code class="language-c">-&gt;</code> (qui est l'équivalent de <code class="language-c">(*person_ptr).member</code>).
         </p>
         <pre><code class="language-c">person_ptr = (struct Person *)malloc(sizeof(struct Person));
 strcpy(person_ptr->name, "Alice");
@@ -138,113 +139,6 @@ int main() {
                 </li>
                 <li>
                     Créez un programme qui crée deux points, les affiche à l'écran et affiche la distance entre ces deux points.
-                </li>
-            </ol>
-        </div>
-    </section>
-
-    <section>
-        <h3>Listes chaînées</h3>
-        <p>
-            Les listes chaînées sont des structures de données qui permettent de stocker une séquence d'éléments en utilisant des
-            pointeurs. Chaque élément de la liste contient une valeur et un pointeur vers l'élément suivant.
-        </p>
-        <pre><code class="language-c">struct Node {
-    int data;
-    struct Node *next;
-};</code></pre>
-        <p>
-            Vous pouvez parcourir une liste chaînée en utilisant des boucles et des pointeurs pour accéder à chaque élément.
-        </p>
-        <pre><code class="language-c">struct Node *head = NULL;
-struct Node *current = NULL;
-
-for (current = head; current != NULL; current = current->next) {
-    printf("%d ", current->data);
-}</code></pre>
-    </section>
-
-    <section>
-        <h3>Exemple de liste chaînée</h3>
-        <div class="container">
-            <div class="col">
-                <pre><code class="language-c" style="font-size: 0.8em">// node.h
-struct Node {
-    int data;
-    struct Node *next;
-};
-
-void add_node(struct Node **head, int data);
-void print_list(struct Node *head);</code></pre>
-            </div>
-            <div class="col">
-                <pre><code class="language-c" style="font-size: 0.8em">// node.c
-#include &lt;stdio.h&gt;
-#include &lt;stdlib.h&gt;
-#include "node.h"
-
-void add_node(struct Node **head, int data) {
-    struct Node *new_node = (struct Node *)malloc(sizeof(struct Node));
-    new_node->data = data;
-    new_node->next = *head;
-    *head = new_node;
-}
-
-void print_list(struct Node *head) {
-    struct Node *current = head;
-    while (current != NULL) {
-        printf("%d ", current->data);
-        current = current->next;
-    }
-    printf("\n");
-}</code></pre>
-            </div>
-        </div>
-        <p>
-            Le paramètre <code>head</code> de la fonction <code>add_node</code> est un pointeur vers un pointeur de structure
-            <code>Node</code>. Cela permet de modifier le pointeur de tête de la liste chaînée.
-        </p>
-    </section>
-
-    <section>
-        <h3>Exemple de liste chaînée (suite)</h3>
-        <pre><code class="language-c">// main.c
-#include &lt;stdio.h&gt;
-#include &lt;stdlib.h&gt;
-#include "node.h"
-
-int main() {
-    struct Node *head = (struct Node *)malloc(sizeof(struct Node));
-    head->data = 1;
-    head->next = NULL;
-
-    add_node(&head, 2);
-    add_node(&head, 3);
-
-    print_list(head); // Output: 3 2 1
-    return 0;
-}</code></pre>
-        <p>
-            Dans cet exemple, les nouveaux éléments sont ajoutés au début de la liste chaînée en modifiant le pointeur de tête.
-        </p>
-        <p>
-            On parle alors de LIFO (Last In, First Out ou pile) à l'inverse de FIFO (First In, First Out ou file) car
-            les éléments sont retirés dans l'ordre inverse de leur insertion.
-        </p>
-    </section>
-
-    <section>
-        <h3>Exercice - Liste chaînée</h3>
-        <div class="instructions">
-            <ol>
-                <li>
-                    Créez une fonction permettant de récupérer le dernier élément d'une liste chaînée.
-                </li>
-                <li>
-                    Créez une fonction permettant d'insérer un élément à la fin d'une liste chaînée.
-                </li>
-                <li>
-                    Créez une fonction permettant de supprimer un élément d'une liste chaînée.
                 </li>
             </ol>
         </div>

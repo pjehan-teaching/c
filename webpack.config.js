@@ -34,7 +34,16 @@ module.exports = {
                         name: '../images/[name].[ext]'
                     }
                 }]
-            }
+            },
+            {
+                test: /\.csv$/,
+                use: [{
+                    loader: 'file-loader',
+                    options: {
+                        name: '../files/[name].[ext]'
+                    }
+                }]
+            },
         ]
     }
 };

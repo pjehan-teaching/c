@@ -109,6 +109,26 @@
     </section>
 
     <section>
+        <h3>Le fichier d'en-tête math.h</h3>
+        <p>
+            Le fichier d'en-tête <code>math.h</code> en C contient des déclarations de fonctions mathématiques standards
+            comme <code>sqrt()</code>, <code>sin()</code>, <code>cos()</code>, <code>tan()</code>, etc.
+        </p>
+        <p>
+            Cependant, pour utiliser ces fonctions, vous devez <strong>lier la bibliothèque mathématique</strong> lors de
+            la compilation en ajoutant l'option <code>-lm</code> à la commande de compilation.
+        </p>
+        <p>
+            Si vous utilisez CMake, vous pouvez ajouter la ligne suivante à votre fichier <code>CMakeLists.txt</code> :
+        </p>
+        <pre><code class="language-c">target_link_libraries(my_project m)</code></pre>
+        <p>
+            Cela permettra de lier la bibliothèque mathématique <code class="language-c">m</code> à votre projet
+            <code class="language-c">my_project</code> lors de la compilation de votre programme.
+        </p>
+    </section>
+
+    <section>
         <h3>Les fichiers d'en-tête utilisateur</h3>
         <p>
             Les fichiers d'en-tête utilisateur sont des fichiers d'en-tête que vous créez pour

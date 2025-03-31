@@ -1,5 +1,6 @@
 import Prism from 'prismjs';
 import './css/style.scss';
+import './files/cities.csv';
 
 require.context('./images', false, /\.(png|jpe?g|svg|gif)$/); // Import all images
 

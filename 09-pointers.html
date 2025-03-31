@@ -33,12 +33,12 @@ printf("Value: %d\n", *pointer);  // Affiche: Value: 42</code></pre>
         <p>
             Extrait du livre "The C Programming Language" de Brian W. Kernighan et Dennis M. Ritchie. (page 90)
         </p>
-        <pre><code class="language-c"> int x = 1, y = 2, z[10];
- int *ip; /* ip is a pointer to int */
- ip = &x; /* ip now points to x */
- y = *ip; /* y is now 1 */
- *ip = 0; /* x is now 0 */
- ip = &z[0]; /* ip now points to z[0] */</code></pre>
+        <pre><code class="language-c">int x = 1, y = 2, z[10];
+int *ip; /* ip is a pointer to int */
+ip = &x; /* ip now points to x */
+y = *ip; /* y is now 1 */
+*ip = 0; /* x is now 0 */
+ip = &z[0]; /* ip now points to z[0] */</code></pre>
         <div class="instructions">
             <ol>
                 <li>
@@ -70,8 +70,8 @@ int number = 42;
 increment(&amp;number);
 printf("Number: %d\n", number); // Affiche: Number: 43</code></pre>
         <p>
-            On notera que l'instruction <code>(*value)++;</code> incrémente la valeur pointée par le pointeur tandis que
-            l'instruction <code>*value++;</code> incrémente l'adresse pointée par le pointeur.
+            On notera que l'instruction <code class="language-c">(*value)++;</code> incrémente la valeur pointée par le pointeur tandis que
+            l'instruction <code class="language-c">*value++;</code> incrémente l'adresse pointée par le pointeur.
         </p>
     </section>
 
@@ -259,17 +259,6 @@ int main() {
     }
     return 0;
 }</code></pre>
-    </section>
-
-    <section>
-        <h3>Ressources</h3>
-        <ul>
-            <li>
-                <a href="https://www.youtube.com/watch?v=t5NszbIerYc&ab_channel=Computerphile" target="_blank">
-                    Computerphile - Essentials: Pointer Power!
-                </a>
-            </li>
-        </ul>
     </section>
 
 </section>

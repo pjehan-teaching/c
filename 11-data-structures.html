@@ -1,0 +1,426 @@
+<section id="data-structures">
+
+    <section>
+        <h2>Les structures de données</h2>
+        <ol>
+            <li>
+                <a href="#array">Tableaux</a>
+            </li>
+            <li>
+                <a href="#linked-lists">Listes chaînées</a>
+            </li>
+            <li>
+                <a href="#binary-tree">Arbres binaires</a>
+            </li>
+            <li>
+                <a href="#dictionary">Dictionnaires</a>
+            </li>
+            <li>
+                <a href="#hash-table">Tables de hachage</a>
+            </li>
+        </ol>
+    </section>
+
+    <section id="array">
+        <h3>Tableaux</h3>
+        <p>
+            Nous avons déjà vu les tableaux en C, qui sont des structures de données permettant de stocker une séquence d'éléments
+            de même type. Les tableaux sont des blocs contigus de mémoire qui peuvent être accédés par leur indice.
+        </p>
+        <pre><code class="language-c">int numbers[] = {1, 2, 3, 4, 5};</code></pre>
+        <p>
+            L'avantage de cette structure de données est l'accès rapide aux éléments par leur indice.
+            Cependant, la <strong>taille d'un tableau est fixe</strong> et ne peut pas être modifiée dynamiquement.
+        </p>
+        <p>
+            De plus, les opérations d'insertion et de suppression d'éléments dans un tableau peuvent être coûteuses en termes de
+            performances, car elles nécessitent de déplacer les éléments existants.
+        </p>
+    </section>
+
+    <section>
+        <h3>Queue (file)</h3>
+        <p>
+            Une file est une structure de données qui permet de stocker des éléments dans un ordre FIFO (First In, First Out).
+            Les éléments sont ajoutés à la fin de la file et retirés du début de la file.
+        </p>
+        <pre><code class="language-c">const int MAX_SIZE = 100;
+
+struct Queue {
+    int items[MAX_SIZE];
+    int size;
+};</code></pre>
+        <p>
+            Les opérations de base sur une file sont <code>enqueue</code> (ajouter un élément) et <code>dequeue</code> (retirer un
+            élément).
+        </p>
+        <footer>
+            <a href="https://www.cs.usfca.edu/~galles/visualization/QueueArray.html" class="info" target="_blank">
+                Visualisation d'une file
+            </a>
+        </footer>
+    </section>
+
+    <section>
+        <h3>Stack (pile)</h3>
+        <p>
+            Une pile est une structure de données qui permet de stocker des éléments dans un ordre LIFO (Last In, First Out).
+            Les éléments sont ajoutés et retirés du sommet de la pile.
+        </p>
+        <pre><code class="language-c">const int MAX_SIZE = 100;
+
+struct Stack {
+    int items[MAX_SIZE];
+    int size;
+};</code></pre>
+        <p>
+            Les opérations de base sur une pile sont <code>push</code> (ajouter un élément) et <code>pop</code> (retirer un
+            élément).
+        </p>
+        <footer>
+            <a href="https://www.cs.usfca.edu/~galles/visualization/StackArray.html" class="info" target="_blank">
+                Visualisation d'une pile
+            </a>
+        </footer>
+    </section>
+
+    <section>
+        <h3>Tableaux - Avantages et inconvénients</h3>
+        <div class="container">
+            <div class="col">
+                <h4>Avantages</h4>
+                <ul>
+                    <li>Accès rapide aux éléments par leur indice.</li>
+                    <li>Utilisation efficace de la mémoire.</li>
+                    <li>Facile à utiliser et à comprendre.</li>
+                </ul>
+            </div>
+            <div class="col">
+                <h4>Inconvénients</h4>
+                <ul>
+                    <li>Taille fixe.</li>
+                    <li>Opérations coûteuses d'insertion et de suppression.</li>
+                    <li>Peut entraîner un gaspillage de mémoire si la taille est trop grande.</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <section id="linked-lists">
+        <h3>Listes chaînées</h3>
+        <p>
+            Les listes chaînées sont des structures de données qui permettent de stocker une séquence d'éléments en utilisant des
+            pointeurs. Chaque élément de la liste contient une valeur et un pointeur vers l'élément suivant.
+        </p>
+        <pre><code class="language-c">struct Node {
+    int data;
+    struct Node *next;
+};</code></pre>
+        <p>
+            Vous pouvez parcourir une liste chaînée en utilisant des boucles et des pointeurs pour accéder à chaque élément.
+        </p>
+        <pre><code class="language-c">struct Node *head = NULL;
+struct Node *current = NULL;
+
+for (current = head; current != NULL; current = current->next) {
+    printf("%d ", current->data);
+}</code></pre>
+        <footer>
+            <a href="https://www.cs.usfca.edu/~galles/visualization/StackLL.html" class="info" target="_blank">
+                Visualisation d'une liste chaînée
+            </a>
+        </footer>
+    </section>
+
+    <section>
+        <h3>Exemple de liste chaînée</h3>
+        <div class="container">
+            <div class="col">
+                <pre><code class="language-c" style="font-size: 0.8em">// node.h
+struct Node {
+    int data;
+    struct Node *next;
+};
+
+void add_node(struct Node **head, int data);
+void print_list(struct Node *head);</code></pre>
+            </div>
+            <div class="col">
+                <pre><code class="language-c" style="font-size: 0.8em">// node.c
+#include &lt;stdio.h&gt;
+#include &lt;stdlib.h&gt;
+#include "node.h"
+
+void add_node(struct Node **head, int data) {
+    struct Node *new_node = (struct Node *)malloc(sizeof(struct Node));
+    new_node->data = data;
+    new_node->next = *head;
+    *head = new_node;
+}
+
+void print_list(struct Node *head) {
+    struct Node *current = head;
+    while (current != NULL) {
+        printf("%d ", current->data);
+        current = current->next;
+    }
+    printf("\n");
+}</code></pre>
+            </div>
+        </div>
+        <p>
+            Le paramètre <code>head</code> de la fonction <code>add_node</code> est un pointeur vers un pointeur de structure
+            <code>Node</code>. Cela permet de modifier le pointeur de tête de la liste chaînée.
+        </p>
+    </section>
+
+    <section>
+        <h3>Double pointeur</h3>
+        <p>
+            Dans l'exemple précédent, le paramètre <code class="language-c">head</code> de la fonction
+            <code class="language-c">add_node</code> est un double pointeur de structure
+            <code class="language-c">Node</code>. Cela permet de modifier le pointeur de tête de la liste chaînée.
+        </p>
+        <p>
+            Une autre approche consiste à renvoyer le nouveau pointeur de tête de la liste chaînée en tant que valeur de retour
+            de la fonction.
+        </p>
+        <div class="container">
+            <div class="col">
+                <pre><code class="language-c" style="font-size: 0.8em">void add_node(struct Node **head, int data) {
+    // Implementation
+    *head = new_head;
+}
+
+add_node(&head, 1);</code></pre>
+            </div>
+            <div class="col">
+                <pre><code class="language-c" style="font-size: 0.8em">struct Node* add_node(struct Node *head, int data) {
+    // Implementation
+    return new_head;
+}
+
+head = add_node(head, 1);</code></pre>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <h3>Exemple de liste chaînée (suite)</h3>
+        <pre><code class="language-c">// main.c
+#include &lt;stdio.h&gt;
+#include &lt;stdlib.h&gt;
+#include "node.h"
+
+int main() {
+    struct Node *head = (struct Node *)malloc(sizeof(struct Node));
+    head->data = 1;
+    head->next = NULL;
+
+    add_node(&head, 2);
+    add_node(&head, 3);
+
+    print_list(head); // Output: 3 2 1
+    return 0;
+}</code></pre>
+        <p>
+            Dans cet exemple, les nouveaux éléments sont ajoutés au début de la liste chaînée en modifiant le pointeur de tête.
+        </p>
+        <p>
+            On parle alors de LIFO (Last In, First Out ou pile) à l'inverse de FIFO (First In, First Out ou file) car
+            les éléments sont retirés dans l'ordre inverse de leur insertion.
+        </p>
+    </section>
+
+    <section>
+        <h3>Exercice - Liste chaînée</h3>
+        <div class="instructions">
+            <ol>
+                <li>
+                    Créez une fonction permettant de récupérer le dernier élément d'une liste chaînée.
+                </li>
+                <li>
+                    Créez une fonction permettant d'insérer un élément à la fin d'une liste chaînée.
+                </li>
+                <li>
+                    Créez une fonction permettant de supprimer un élément d'une liste chaînée.
+                </li>
+            </ol>
+        </div>
+    </section>
+
+    <section>
+        <h3>Liste chaînée - Améliorations</h3>
+        <p>
+            Les listes chaînées peuvent être améliorées en utilisant des <strong>listes doublement chaînées</strong>,
+            où chaque nœud contient un pointeur vers le nœud précédent et le nœud suivant. Cela permet de parcourir
+            la liste dans les deux sens.
+        </p>
+        <p>
+            Il est également possible d'utiliser des <strong>listes circulaires</strong>, où le dernier nœud pointe
+            vers le premier nœud, formant ainsi un cycle. Cela permet de parcourir la liste de manière continue sans
+            avoir à vérifier si le pointeur suivant est NULL.
+        </p>
+    </section>
+
+    <section>
+        <h3>Liste chaînée - Avantages et inconvénients</h3>
+        <div class="container">
+            <div class="col">
+                <h4>Avantages</h4>
+                <ul>
+                    <li>Insertion et suppression rapides en début de liste.</li>
+                    <li>Utilisation efficace de la mémoire.</li>
+                    <li>La taille de la liste peut être modifiée dynamiquement.</li>
+                </ul>
+            </div>
+            <div class="col">
+                <h4>Inconvénients</h4>
+                <ul>
+                    <li>Accès lent aux éléments au milieu de la liste.</li>
+                    <li>Nécessite plus de mémoire que les tableaux.</li>
+                    <li>Complexité de mise en œuvre plus élevée.</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <section id="binary-tree">
+        <h3>Arbres binaires</h3>
+        <p>
+            Les arbres binaires sont des structures de données qui permettent de stocker des éléments de manière hiérarchique.
+            Chaque élément de l'arbre est appelé un nœud et peut avoir jusqu'à deux nœuds enfants, appelés nœud gauche et nœud droit.
+        </p>
+        <pre><code class="language-c">struct Node {
+    int data;
+    struct Node *left;
+    struct Node *right;
+};</code></pre>
+        <footer>
+            <a href="https://www.cs.usfca.edu/~galles/visualization/BST.html" class="info" target="_blank">
+                Visualisation d'un arbre binaire
+            </a>
+        </footer>
+    </section>
+
+    <section>
+        <h3>Balanced / Unbalanced</h3>
+        <p>
+            Un arbre binaire équilibré est un arbre dans lequel la différence de hauteur entre les sous-arbres gauche
+            et droit de chaque nœud est au <strong>maximum de 1</strong>. Cela garantit que l'arbre reste équilibré et
+            que les opérations de recherche, d'insertion et de suppression restent efficaces.
+        </p>
+    </section>
+
+    <section>
+        <h3>Arbres binaires - Avantages et inconvénients</h3>
+        <div class="container">
+            <div class="col">
+                <h4>Avantages</h4>
+                <ul>
+                    <li>Recherche rapide des éléments.</li>
+                    <li>Insertion et suppression efficaces.</li>
+                    <li>Utilisation efficace de la mémoire.</li>
+                </ul>
+            </div>
+            <div class="col">
+                <h4>Inconvénients</h4>
+                <ul>
+                    <li>Complexité de mise en œuvre plus élevée.</li>
+                    <li>Les opérations de rotation peuvent être coûteuses.</li>
+                    <li>Les arbres binaires peuvent devenir déséquilibrés.</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <section id="dictionary">
+        <h3>Dictionnaires</h3>
+        <p>
+            Les dictionnaires sont des structures de données qui permettent de stocker des paires clé-valeur. Chaque élément du
+            dictionnaire est associé à une clé unique qui permet d'accéder à sa valeur.
+        </p>
+        <pre><code class="language-c">struct Dictionary {
+    char *key;
+    int value;
+};</code></pre>
+    </section>
+
+    <section>
+        <h3>Dictionnaires - Avantages et inconvénients</h3>
+        <div class="container">
+            <div class="col">
+                <h4>Avantages</h4>
+                <ul>
+                    <li>Recherche rapide des éléments par clé.</li>
+                    <li>Insertion et suppression efficaces.</li>
+                    <li>Peut stocker des données de manière structurée.</li>
+                </ul>
+            </div>
+            <div class="col">
+                <h4>Inconvénients</h4>
+                <ul>
+                    <li>Les clés doivent être uniques.</li>
+                    <li>Peut entraîner un gaspillage de mémoire si la taille est trop grande.</li>
+                    <li>Complexité de mise en œuvre plus élevée.</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <section id="hash-table">
+        <h3>Tables de hachage</h3>
+        <p>
+            Les tables de hachage sont des structures de données qui permettent de stocker des éléments en associant une clé à une
+            valeur. Les tables de hachage utilisent une fonction de hachage pour calculer l'indice de stockage de chaque élément.
+        </p>
+        <pre><code class="language-c">struct HashTable {
+    int size;
+    struct Dictionary **table;
+};</code></pre>
+    </section>
+
+    <section>
+        <h3>Tables de hachage - Avantages et inconvénients</h3>
+        <div class="container">
+            <div class="col">
+                <h4>Avantages</h4>
+                <ul>
+                    <li>Recherche rapide des éléments par clé.</li>
+                    <li>Insertion et suppression efficaces.</li>
+                    <li>Peut stocker des données de manière structurée.</li>
+                </ul>
+            </div>
+            <div class="col">
+                <h4>Inconvénients</h4>
+                <ul>
+                    <li>Les clés doivent être uniques.</li>
+                    <li>Peut entraîner un gaspillage de mémoire si la taille est trop grande.</li>
+                    <li>Complexité de mise en œuvre plus élevée.</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <h3>Ressources</h3>
+        <ul>
+            <li>
+                <a href="https://www.youtube.com/watch?v=t5NszbIerYc&ab_channel=Computerphile" target="_blank">
+                    Computerphile - Essentials: Pointer Power!
+                </a>
+            </li>
+            <li>
+                <a href="https://www.youtube.com/watch?v=0euvEdPwQnQ&t=5434s&ab_channel=CS50" target="_blank">
+                    CS50 - Data Structures
+                </a>
+            </li>
+            <li>
+                <a href="https://www.youtube.com/watch?v=K1a2Bk8NrYQ&ab_channel=SpanningTree" target="_blank">
+                    SpanningTree - Understanding B-Trees: The Data Structure Behind Modern Databases
+                </a>
+            </li>
+        </ul>
+    </section>
+
+</section>
